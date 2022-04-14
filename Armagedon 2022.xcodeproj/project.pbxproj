@@ -9,23 +9,51 @@
 /* Begin PBXBuildFile section */
 		5A02CACE28085EFE00A7A19B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CACD28085EFE00A7A19B /* AppDelegate.swift */; };
 		5A02CAD028085EFE00A7A19B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CACF28085EFE00A7A19B /* SceneDelegate.swift */; };
-		5A02CAD228085EFE00A7A19B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAD128085EFE00A7A19B /* ViewController.swift */; };
-		5A02CAD528085EFE00A7A19B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A02CAD328085EFE00A7A19B /* Main.storyboard */; };
-		5A02CAD828085EFE00A7A19B /* Armagedon_2022.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAD628085EFE00A7A19B /* Armagedon_2022.xcdatamodeld */; };
+		5A02CAD828085EFE00A7A19B /* Armagedon2022.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAD628085EFE00A7A19B /* Armagedon2022.xcdatamodeld */; };
 		5A02CADA28085F0000A7A19B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A02CAD928085F0000A7A19B /* Assets.xcassets */; };
 		5A02CADD28085F0000A7A19B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A02CADB28085F0000A7A19B /* LaunchScreen.storyboard */; };
+		5A02CAE728085F7800A7A19B /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAE528085F7800A7A19B /* UIViewController+Ext.swift */; };
+		5A02CAE828085F7800A7A19B /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAE628085F7800A7A19B /* UIView+Ext.swift */; };
+		5A02CAFB28085F8200A7A19B /* DataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAEA28085F8100A7A19B /* DataWorker.swift */; };
+		5A02CAFC28085F8200A7A19B /* NetworkWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAEB28085F8100A7A19B /* NetworkWorker.swift */; };
+		5A02CAFD28085F8200A7A19B /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAEC28085F8100A7A19B /* CoreDataWorker.swift */; };
+		5A02CAFE28085F8200A7A19B /* DeliveryApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAEE28085F8100A7A19B /* DeliveryApp.xcdatamodeld */; };
+		5A02CAFF28085F8200A7A19B /* ArmageddonCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAF128085F8100A7A19B /* ArmageddonCD.xcdatamodeld */; };
+		5A02CB0028085F8200A7A19B /* FileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAF328085F8100A7A19B /* FileWorker.swift */; };
+		5A02CB0128085F8200A7A19B /* UserDefaultsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAF428085F8100A7A19B /* UserDefaultsWorker.swift */; };
+		5A02CB0228085F8200A7A19B /* JSONWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAF528085F8100A7A19B /* JSONWorker.swift */; };
+		5A02CB0328085F8200A7A19B /* ImageWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAF628085F8100A7A19B /* ImageWorker.swift */; };
+		5A02CB0428085F8200A7A19B /* DestroyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAF828085F8200A7A19B /* DestroyListViewController.swift */; };
+		5A02CB0528085F8200A7A19B /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAF928085F8200A7A19B /* FiltersViewController.swift */; };
+		5A02CB0628085F8200A7A19B /* AsteroidListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAFA28085F8200A7A19B /* AsteroidListViewController.swift */; };
+		5A02CB0928085F8C00A7A19B /* ProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB0728085F8B00A7A19B /* ProjectCoordinator.swift */; };
+		5A02CB0A28085F8C00A7A19B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB0828085F8C00A7A19B /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5A02CACA28085EFE00A7A19B /* Armagedon 2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Armagedon 2022.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A02CACD28085EFE00A7A19B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A02CACF28085EFE00A7A19B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5A02CAD128085EFE00A7A19B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5A02CAD428085EFE00A7A19B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5A02CAD728085EFE00A7A19B /* Armagedon_2022.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Armagedon_2022.xcdatamodel; sourceTree = "<group>"; };
 		5A02CAD928085F0000A7A19B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A02CADC28085F0000A7A19B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A02CADE28085F0000A7A19B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A02CAE528085F7800A7A19B /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		5A02CAE628085F7800A7A19B /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		5A02CAEA28085F8100A7A19B /* DataWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataWorker.swift; sourceTree = "<group>"; };
+		5A02CAEB28085F8100A7A19B /* NetworkWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkWorker.swift; sourceTree = "<group>"; };
+		5A02CAEC28085F8100A7A19B /* CoreDataWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
+		5A02CAEF28085F8100A7A19B /* DeliveryApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeliveryApp.xcdatamodel; sourceTree = "<group>"; };
+		5A02CAF228085F8100A7A19B /* Asteroider_Test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Asteroider_Test.xcdatamodel; sourceTree = "<group>"; };
+		5A02CAF328085F8100A7A19B /* FileWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWorker.swift; sourceTree = "<group>"; };
+		5A02CAF428085F8100A7A19B /* UserDefaultsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsWorker.swift; sourceTree = "<group>"; };
+		5A02CAF528085F8100A7A19B /* JSONWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONWorker.swift; sourceTree = "<group>"; };
+		5A02CAF628085F8100A7A19B /* ImageWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageWorker.swift; sourceTree = "<group>"; };
+		5A02CAF828085F8200A7A19B /* DestroyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestroyListViewController.swift; sourceTree = "<group>"; };
+		5A02CAF928085F8200A7A19B /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		5A02CAFA28085F8200A7A19B /* AsteroidListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidListViewController.swift; sourceTree = "<group>"; };
+		5A02CB0728085F8B00A7A19B /* ProjectCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCoordinator.swift; sourceTree = "<group>"; };
+		5A02CB0828085F8C00A7A19B /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +88,68 @@
 			children = (
 				5A02CACD28085EFE00A7A19B /* AppDelegate.swift */,
 				5A02CACF28085EFE00A7A19B /* SceneDelegate.swift */,
-				5A02CAD128085EFE00A7A19B /* ViewController.swift */,
-				5A02CAD328085EFE00A7A19B /* Main.storyboard */,
-				5A02CAD928085F0000A7A19B /* Assets.xcassets */,
+				5A02CB0728085F8B00A7A19B /* ProjectCoordinator.swift */,
+				5A02CB0828085F8C00A7A19B /* Enums.swift */,
+				5A02CAF728085F8200A7A19B /* Views */,
+				5A02CAE928085F8100A7A19B /* Workers */,
+				5A02CAE428085F7800A7A19B /* Extension */,
 				5A02CADB28085F0000A7A19B /* LaunchScreen.storyboard */,
+				5A02CAD928085F0000A7A19B /* Assets.xcassets */,
 				5A02CADE28085F0000A7A19B /* Info.plist */,
-				5A02CAD628085EFE00A7A19B /* Armagedon_2022.xcdatamodeld */,
+				5A02CAD628085EFE00A7A19B /* Armagedon2022.xcdatamodeld */,
 			);
 			path = "Armagedon 2022";
+			sourceTree = "<group>";
+		};
+		5A02CAE428085F7800A7A19B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5A02CAE528085F7800A7A19B /* UIViewController+Ext.swift */,
+				5A02CAE628085F7800A7A19B /* UIView+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		5A02CAE928085F8100A7A19B /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				5A02CAEA28085F8100A7A19B /* DataWorker.swift */,
+				5A02CAEB28085F8100A7A19B /* NetworkWorker.swift */,
+				5A02CAF328085F8100A7A19B /* FileWorker.swift */,
+				5A02CAF428085F8100A7A19B /* UserDefaultsWorker.swift */,
+				5A02CAF528085F8100A7A19B /* JSONWorker.swift */,
+				5A02CAF628085F8100A7A19B /* ImageWorker.swift */,
+				5A02CAEC28085F8100A7A19B /* CoreDataWorker.swift */,
+				5A02CAED28085F8100A7A19B /* CoreDataItems */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		5A02CAED28085F8100A7A19B /* CoreDataItems */ = {
+			isa = PBXGroup;
+			children = (
+				5A02CAEE28085F8100A7A19B /* DeliveryApp.xcdatamodeld */,
+				5A02CAF028085F8100A7A19B /* CoreDataModels */,
+			);
+			path = CoreDataItems;
+			sourceTree = "<group>";
+		};
+		5A02CAF028085F8100A7A19B /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				5A02CAF128085F8100A7A19B /* ArmageddonCD.xcdatamodeld */,
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		5A02CAF728085F8200A7A19B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5A02CAF828085F8200A7A19B /* DestroyListViewController.swift */,
+				5A02CAF928085F8200A7A19B /* FiltersViewController.swift */,
+				5A02CAFA28085F8200A7A19B /* AsteroidListViewController.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +212,6 @@
 			files = (
 				5A02CADD28085F0000A7A19B /* LaunchScreen.storyboard in Resources */,
 				5A02CADA28085F0000A7A19B /* Assets.xcassets in Resources */,
-				5A02CAD528085EFE00A7A19B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,24 +222,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A02CAD228085EFE00A7A19B /* ViewController.swift in Sources */,
 				5A02CACE28085EFE00A7A19B /* AppDelegate.swift in Sources */,
-				5A02CAD828085EFE00A7A19B /* Armagedon_2022.xcdatamodeld in Sources */,
+				5A02CB0428085F8200A7A19B /* DestroyListViewController.swift in Sources */,
+				5A02CAFE28085F8200A7A19B /* DeliveryApp.xcdatamodeld in Sources */,
+				5A02CAD828085EFE00A7A19B /* Armagedon2022.xcdatamodeld in Sources */,
+				5A02CAE828085F7800A7A19B /* UIView+Ext.swift in Sources */,
+				5A02CB0128085F8200A7A19B /* UserDefaultsWorker.swift in Sources */,
+				5A02CAE728085F7800A7A19B /* UIViewController+Ext.swift in Sources */,
+				5A02CAFD28085F8200A7A19B /* CoreDataWorker.swift in Sources */,
+				5A02CB0928085F8C00A7A19B /* ProjectCoordinator.swift in Sources */,
+				5A02CAFF28085F8200A7A19B /* ArmageddonCD.xcdatamodeld in Sources */,
+				5A02CB0228085F8200A7A19B /* JSONWorker.swift in Sources */,
+				5A02CAFC28085F8200A7A19B /* NetworkWorker.swift in Sources */,
+				5A02CB0628085F8200A7A19B /* AsteroidListViewController.swift in Sources */,
 				5A02CAD028085EFE00A7A19B /* SceneDelegate.swift in Sources */,
+				5A02CB0328085F8200A7A19B /* ImageWorker.swift in Sources */,
+				5A02CAFB28085F8200A7A19B /* DataWorker.swift in Sources */,
+				5A02CB0528085F8200A7A19B /* FiltersViewController.swift in Sources */,
+				5A02CB0028085F8200A7A19B /* FileWorker.swift in Sources */,
+				5A02CB0A28085F8C00A7A19B /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5A02CAD328085EFE00A7A19B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5A02CAD428085EFE00A7A19B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5A02CADB28085F0000A7A19B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -221,7 +309,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -276,7 +364,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -297,9 +385,9 @@
 				INFOPLIST_FILE = "Armagedon 2022/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -324,9 +412,9 @@
 				INFOPLIST_FILE = "Armagedon 2022/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,13 +452,33 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		5A02CAD628085EFE00A7A19B /* Armagedon_2022.xcdatamodeld */ = {
+		5A02CAD628085EFE00A7A19B /* Armagedon2022.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				5A02CAD728085EFE00A7A19B /* Armagedon_2022.xcdatamodel */,
 			);
 			currentVersion = 5A02CAD728085EFE00A7A19B /* Armagedon_2022.xcdatamodel */;
-			path = Armagedon_2022.xcdatamodeld;
+			path = Armagedon2022.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		5A02CAEE28085F8100A7A19B /* DeliveryApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5A02CAEF28085F8100A7A19B /* DeliveryApp.xcdatamodel */,
+			);
+			currentVersion = 5A02CAEF28085F8100A7A19B /* DeliveryApp.xcdatamodel */;
+			path = DeliveryApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		5A02CAF128085F8100A7A19B /* ArmageddonCD.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5A02CAF228085F8100A7A19B /* Asteroider_Test.xcdatamodel */,
+			);
+			currentVersion = 5A02CAF228085F8100A7A19B /* Asteroider_Test.xcdatamodel */;
+			path = ArmageddonCD.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

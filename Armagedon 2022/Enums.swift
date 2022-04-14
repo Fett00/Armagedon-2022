@@ -28,5 +28,5 @@ enum APIKeys{
 
 enum Colors{
     
-    //static let mainColor = UIColor(named: "MainColor")!
+    static let buttonColor = UIColor(named: "ButtonColor")!
 }

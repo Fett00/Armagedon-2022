@@ -28,6 +28,7 @@
 		5A02CB0628085F8200A7A19B /* AsteroidListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAFA28085F8200A7A19B /* AsteroidListViewController.swift */; };
 		5A02CB0928085F8C00A7A19B /* ProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB0728085F8B00A7A19B /* ProjectCoordinator.swift */; };
 		5A02CB0A28085F8C00A7A19B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB0828085F8C00A7A19B /* Enums.swift */; };
+		5A02CB1328087C0F00A7A19B /* DateWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB1228087C0F00A7A19B /* DateWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		5A02CAFA28085F8200A7A19B /* AsteroidListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidListViewController.swift; sourceTree = "<group>"; };
 		5A02CB0728085F8B00A7A19B /* ProjectCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCoordinator.swift; sourceTree = "<group>"; };
 		5A02CB0828085F8C00A7A19B /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		5A02CB1228087C0F00A7A19B /* DateWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				5A02CAF428085F8100A7A19B /* UserDefaultsWorker.swift */,
 				5A02CAF528085F8100A7A19B /* JSONWorker.swift */,
 				5A02CAF628085F8100A7A19B /* ImageWorker.swift */,
+				5A02CB1228087C0F00A7A19B /* DateWorker.swift */,
 				5A02CAEC28085F8100A7A19B /* CoreDataWorker.swift */,
 				5A02CAED28085F8100A7A19B /* CoreDataItems */,
 			);
@@ -241,6 +244,7 @@
 				5A02CB0528085F8200A7A19B /* FiltersViewController.swift in Sources */,
 				5A02CB0028085F8200A7A19B /* FileWorker.swift in Sources */,
 				5A02CB0A28085F8C00A7A19B /* Enums.swift in Sources */,
+				5A02CB1328087C0F00A7A19B /* DateWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

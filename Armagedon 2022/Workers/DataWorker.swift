@@ -329,7 +329,7 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
         
         DispatchQueue.global(qos: .userInteractive).async {
             
-            self.networkWorker.getData(from: URLs.nasaURL) { result in
+            self.networkWorker.getData(from: URLs.nasaURLForNearestObjects) { result in
                 
                 switch result{
                     

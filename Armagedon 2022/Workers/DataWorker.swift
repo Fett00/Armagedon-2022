@@ -329,19 +329,44 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
         
         DispatchQueue.global(qos: .userInteractive).async {
             
-            self.networkWorker.getData(from: URLs.nasaURLForNearestObjects) { result in
+            let group = DispatchGroup() //Контроль потока
+            
+            let currentDate = self.dateWorker.currentDate //Текущая дата
+            let nextWeekDate = self.dateWorker.warp(fromDate: currentDate, onDays: 7) //Текущая дата + 7 дней(ограничение api)
+            
+            //Подготовка url
+            var rawUrl = URLs.nasaURLForNearestObjects
+            rawUrl = rawUrl.replacingOccurrences(of: "start_date=", with: "start_date=\(currentDate)")
+            rawUrl = rawUrl.replacingOccurrences(of: "end_date=", with: "end_date=\(nextWeekDate)")
+            let url = rawUrl.replacingOccurrences(of: "api_key=", with: "api_key=\(APIKeys.nasaAPIKey)")
+            //
+            
+            var model: NearObjectsModel?
+            
+            group.enter()
+            //Запрос в сеть
+            self.networkWorker.getData(from: url) { result in
+                
                 
                 switch result{
                     
                 case .failure(let error):
                     
                     print("Network Error: \(error.localizedDescription)")
+                    
                 
                 case .success(let data):
                     
-                    print(data.count)
+                    //Декодирование данных из сети в модель
+                    model = self.jsonDecoderWorker.decode(type: NearObjectsModel.self, data: data)
                 }
+                
+                group.leave()
             }
+            
+            group.wait()//Ожидание завершения обработки нетворка
+            
+            guard let strongModel = model else { return }
         }
     }
 }

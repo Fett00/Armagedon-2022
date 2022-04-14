@@ -17,7 +17,6 @@
 		5A02CAFB28085F8200A7A19B /* DataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAEA28085F8100A7A19B /* DataWorker.swift */; };
 		5A02CAFC28085F8200A7A19B /* NetworkWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAEB28085F8100A7A19B /* NetworkWorker.swift */; };
 		5A02CAFD28085F8200A7A19B /* CoreDataWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAEC28085F8100A7A19B /* CoreDataWorker.swift */; };
-		5A02CAFE28085F8200A7A19B /* DeliveryApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAEE28085F8100A7A19B /* DeliveryApp.xcdatamodeld */; };
 		5A02CAFF28085F8200A7A19B /* ArmageddonCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAF128085F8100A7A19B /* ArmageddonCD.xcdatamodeld */; };
 		5A02CB0028085F8200A7A19B /* FileWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAF328085F8100A7A19B /* FileWorker.swift */; };
 		5A02CB0128085F8200A7A19B /* UserDefaultsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CAF428085F8100A7A19B /* UserDefaultsWorker.swift */; };
@@ -29,6 +28,7 @@
 		5A02CB0928085F8C00A7A19B /* ProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB0728085F8B00A7A19B /* ProjectCoordinator.swift */; };
 		5A02CB0A28085F8C00A7A19B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB0828085F8C00A7A19B /* Enums.swift */; };
 		5A02CB1328087C0F00A7A19B /* DateWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB1228087C0F00A7A19B /* DateWorker.swift */; };
+		5A02CB172808993E00A7A19B /* AsteroidsNetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB162808993E00A7A19B /* AsteroidsNetworkModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,7 +44,6 @@
 		5A02CAEA28085F8100A7A19B /* DataWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataWorker.swift; sourceTree = "<group>"; };
 		5A02CAEB28085F8100A7A19B /* NetworkWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkWorker.swift; sourceTree = "<group>"; };
 		5A02CAEC28085F8100A7A19B /* CoreDataWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataWorker.swift; sourceTree = "<group>"; };
-		5A02CAEF28085F8100A7A19B /* DeliveryApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DeliveryApp.xcdatamodel; sourceTree = "<group>"; };
 		5A02CAF228085F8100A7A19B /* Asteroider_Test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Asteroider_Test.xcdatamodel; sourceTree = "<group>"; };
 		5A02CAF328085F8100A7A19B /* FileWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileWorker.swift; sourceTree = "<group>"; };
 		5A02CAF428085F8100A7A19B /* UserDefaultsWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsWorker.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		5A02CB0728085F8B00A7A19B /* ProjectCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectCoordinator.swift; sourceTree = "<group>"; };
 		5A02CB0828085F8C00A7A19B /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		5A02CB1228087C0F00A7A19B /* DateWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateWorker.swift; sourceTree = "<group>"; };
+		5A02CB162808993E00A7A19B /* AsteroidsNetworkModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidsNetworkModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +94,7 @@
 				5A02CB0828085F8C00A7A19B /* Enums.swift */,
 				5A02CAF728085F8200A7A19B /* Views */,
 				5A02CAE928085F8100A7A19B /* Workers */,
+				5A02CB152808993E00A7A19B /* Models */,
 				5A02CAE428085F7800A7A19B /* Extension */,
 				5A02CADB28085F0000A7A19B /* LaunchScreen.storyboard */,
 				5A02CAD928085F0000A7A19B /* Assets.xcassets */,
@@ -123,26 +124,9 @@
 				5A02CAF628085F8100A7A19B /* ImageWorker.swift */,
 				5A02CB1228087C0F00A7A19B /* DateWorker.swift */,
 				5A02CAEC28085F8100A7A19B /* CoreDataWorker.swift */,
-				5A02CAED28085F8100A7A19B /* CoreDataItems */,
-			);
-			path = Workers;
-			sourceTree = "<group>";
-		};
-		5A02CAED28085F8100A7A19B /* CoreDataItems */ = {
-			isa = PBXGroup;
-			children = (
-				5A02CAEE28085F8100A7A19B /* DeliveryApp.xcdatamodeld */,
-				5A02CAF028085F8100A7A19B /* CoreDataModels */,
-			);
-			path = CoreDataItems;
-			sourceTree = "<group>";
-		};
-		5A02CAF028085F8100A7A19B /* CoreDataModels */ = {
-			isa = PBXGroup;
-			children = (
 				5A02CAF128085F8100A7A19B /* ArmageddonCD.xcdatamodeld */,
 			);
-			path = CoreDataModels;
+			path = Workers;
 			sourceTree = "<group>";
 		};
 		5A02CAF728085F8200A7A19B /* Views */ = {
@@ -151,8 +135,48 @@
 				5A02CAF828085F8200A7A19B /* DestroyListViewController.swift */,
 				5A02CAF928085F8200A7A19B /* FiltersViewController.swift */,
 				5A02CAFA28085F8200A7A19B /* AsteroidListViewController.swift */,
+				5A02CB142808914600A7A19B /* Cells */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5A02CB142808914600A7A19B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5A02CB152808993E00A7A19B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5A728E362808B57E00F850F6 /* DataModels */,
+				5A728E352808B26500F850F6 /* CoreDataModels */,
+				5A728E342808B25F00F850F6 /* NetworkModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5A728E342808B25F00F850F6 /* NetworkModels */ = {
+			isa = PBXGroup;
+			children = (
+				5A02CB162808993E00A7A19B /* AsteroidsNetworkModels.swift */,
+			);
+			path = NetworkModels;
+			sourceTree = "<group>";
+		};
+		5A728E352808B26500F850F6 /* CoreDataModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreDataModels;
+			sourceTree = "<group>";
+		};
+		5A728E362808B57E00F850F6 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,12 +251,12 @@
 			files = (
 				5A02CACE28085EFE00A7A19B /* AppDelegate.swift in Sources */,
 				5A02CB0428085F8200A7A19B /* DestroyListViewController.swift in Sources */,
-				5A02CAFE28085F8200A7A19B /* DeliveryApp.xcdatamodeld in Sources */,
 				5A02CAD828085EFE00A7A19B /* Armagedon2022.xcdatamodeld in Sources */,
 				5A02CAE828085F7800A7A19B /* UIView+Ext.swift in Sources */,
 				5A02CB0128085F8200A7A19B /* UserDefaultsWorker.swift in Sources */,
 				5A02CAE728085F7800A7A19B /* UIViewController+Ext.swift in Sources */,
 				5A02CAFD28085F8200A7A19B /* CoreDataWorker.swift in Sources */,
+				5A02CB172808993E00A7A19B /* AsteroidsNetworkModels.swift in Sources */,
 				5A02CB0928085F8C00A7A19B /* ProjectCoordinator.swift in Sources */,
 				5A02CAFF28085F8200A7A19B /* ArmageddonCD.xcdatamodeld in Sources */,
 				5A02CB0228085F8200A7A19B /* JSONWorker.swift in Sources */,
@@ -463,16 +487,6 @@
 			);
 			currentVersion = 5A02CAD728085EFE00A7A19B /* Armagedon_2022.xcdatamodel */;
 			path = Armagedon2022.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		5A02CAEE28085F8100A7A19B /* DeliveryApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				5A02CAEF28085F8100A7A19B /* DeliveryApp.xcdatamodel */,
-			);
-			currentVersion = 5A02CAEF28085F8100A7A19B /* DeliveryApp.xcdatamodel */;
-			path = DeliveryApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

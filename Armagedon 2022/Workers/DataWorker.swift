@@ -299,3 +299,49 @@
 //    }
 //}
 //
+
+import Foundation
+
+protocol DataWorkerForAsteroidListProtocol{
+    
+    func requestAsteroidList()
+}
+
+protocol DataWorkerForDestroyListProtocol{
+    
+    
+}
+
+protocol DataWorkerForFiltersProtocol{
+    
+    
+}
+
+class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListProtocol, DataWorkerForFiltersProtocol{
+    
+    var coreDataWorker: CoreDataWorkerProtocol!
+    var jsonDecoderWorker: JSONDecoderWorkerProtocol!
+    var jsonEncoderWorker: JSONEncoderWorkerProtocol!
+    var networkWorker: NetworkWorkerProtocol!
+    var dateWorker: DateWorkerProtocol!
+    
+    func requestAsteroidList(){
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            
+            self.networkWorker.getData(from: URLs.nasaURL) { result in
+                
+                switch result{
+                    
+                case .failure(let error):
+                    
+                    print("Network Error: \(error.localizedDescription)")
+                
+                case .success(let data):
+                    
+                    print(data.count)
+                }
+            }
+        }
+    }
+}

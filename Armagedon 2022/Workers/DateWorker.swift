@@ -11,7 +11,7 @@ protocol DateWorkerProtocol{
     
     var currentDate: String { get }
     
-    func warp(fromDate: String, onDays: Int)
+    func warp(fromDate: String, onDays: Int) -> String
 }
 
 class DateWorker: DateWorkerProtocol{
@@ -19,13 +19,18 @@ class DateWorker: DateWorkerProtocol{
     var currentDate: String {
         
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "yyyy-mm-dd"
+        dateFormater.dateFormat = "yyyy-MM-dd"
         let stringDate = dateFormater.string(from: Date())
-        print(stringDate)
         return stringDate
     }
     
-    func warp(fromDate: String, onDays: Int) {
+    func warp(fromDate: String, onDays: Int) -> String {
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let calendar = Calendar(identifier: .gregorian)
+        guard let date = dateFormatter.date(from: fromDate) else { return "" }
+        guard let newDate = calendar.date(byAdding: .day, value: onDays, to: date) else { return "" }
+        return dateFormatter.string(from: newDate)
     }
 }

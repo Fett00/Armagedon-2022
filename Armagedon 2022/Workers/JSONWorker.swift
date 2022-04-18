@@ -30,11 +30,33 @@ final class JSONDecoderWorker: JSONDecoderWorkerProtocol{
     
     func decode<T: Decodable>(type: T.Type, data: Data) -> T?{
         
+//        do {
+//            return try decoder.decode(T.self, from: data)
+//        } catch {
+//
+//            print(error.localizedDescription)
+//            return nil
+//        }
+        
         do {
             return try decoder.decode(T.self, from: data)
+        } catch DecodingError.dataCorrupted(let context) {
+            print(context)
+            return nil
+        } catch DecodingError.keyNotFound(let key, let context) {
+            print("Key '\(key)' not found:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+            return nil
+        } catch DecodingError.valueNotFound(let value, let context) {
+            print("Value '\(value)' not found:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+            return nil
+        } catch DecodingError.typeMismatch(let type, let context) {
+            print("Type '\(type)' mismatch:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+            return nil
         } catch {
-            
-            print(error.localizedDescription)
+            print("error: ", error)
             return nil
         }
     }

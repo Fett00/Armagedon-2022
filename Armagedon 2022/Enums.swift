@@ -12,6 +12,8 @@ enum Images{
     static let planet = UIImage(systemName: "globe")!
     static let trashCan = UIImage(systemName: "trash")!
     static let filter = UIImage(systemName: "line.3.horizontal.decrease")!
+    static let asteroid = UIImage(named: "Asteroid")!
+    static let dino = UIImage(named: "Dino")!
 }
 
 enum URLs{
@@ -29,4 +31,8 @@ enum APIKeys{
 enum Colors{
     
     static let buttonColor = UIColor(named: "ButtonColor")!
+    static let dcL = UIColor(named: "DangerousColorLeft")!
+    static let dcR = UIColor(named: "DangerousColorRight")!
+    static let ndcL = UIColor(named: "NotDangerousColorLeft")!
+    static let ndcR = UIColor(named: "NotDangerousColorRight")!
 }

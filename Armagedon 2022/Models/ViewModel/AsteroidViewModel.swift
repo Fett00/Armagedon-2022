@@ -5,15 +5,15 @@
 //  Created by Садык Мусаев on 15.04.2022.
 //
 
-import Foundation
+import UIKit
 
-struct AsteroidDataModel{
+struct AsteroidViewModel{
     
-    let name: String
-    let diameter: Int
+    let asteroidImage: UIImage
+    let diameter: String
     let destinationTime: String
-    let distanceKm: Int
-    let distanceLunar: Int
-    let isDangerous: Bool
+    let distance: String
+    let isDangerous: String
     let orbitingBody: String
+    let asteroidName: String
 }

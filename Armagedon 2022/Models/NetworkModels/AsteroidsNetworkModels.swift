@@ -37,6 +37,7 @@ struct NearEarthObjects: Decodable{
     let name: String
     let estimatedDiameter: EstimatedDiameter
     let isPotentiallyHazardousAsteroid: Bool
+    let approachInfo: [ApproachInfo]
     
     enum CodingKeys: String, CodingKey{
         
@@ -44,6 +45,7 @@ struct NearEarthObjects: Decodable{
         case name = "name"
         case isPotentiallyHazardousAsteroid = "is_potentially_hazardous_asteroid"
         case estimatedDiameter = "estimated_diameter"
+        case approachInfo = "close_approach_data"
     }
 }
 
@@ -66,4 +68,24 @@ struct Meters: Decodable{
         case estimatedDiameterMax = "estimated_diameter_min"
         case estimatedDiameterMin = "estimated_diameter_max"
     }
+}
+
+struct ApproachInfo: Decodable{
+    
+    let orbitingBody: String
+    let closeApproachDate: String
+    let missDistance: MissDistance
+    
+    enum CodingKeys: String, CodingKey{
+        
+        case orbitingBody = "close_approach_date"
+        case closeApproachDate = "orbiting_body"
+        case missDistance = "miss_distance"
+    }
+}
+
+struct MissDistance: Decodable{
+    
+    let lunar: String
+    let kilometers: String
 }

@@ -40,10 +40,6 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private let asteroidImageWidthConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    
-    private let asteroidImageHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
-    
     private let dinoImage: UIImageView = {
         
         let imageView = UIImageView(image: Images.dino)
@@ -122,6 +118,7 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = Colors.buttonColor
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.addTarget(nil, action: "addToDestroying:", for: .touchUpInside)
         //button.addTarget(nil, action: Selector(("addToCart:")), for: .touchUpInside)
         
         return button
@@ -218,26 +215,28 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = .secondarySystemFill
         
         asteroidView.layer.addSublayer(dangerousGradientLayer)
-        asteroidView.addSubview(asteroidName, dinoImage, asteroidImage)
+        asteroidView.addSubview(dinoImage, asteroidImage, asteroidName)
         asteroidName.constraints(top: nil, bottom: asteroidView.bottomAnchor, leading: asteroidView.leadingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 10, paddingLeft: 10, paddingRight: 0, width: 0, height: 0)
         dinoImage.constraints(top: nil, bottom: asteroidView.bottomAnchor, leading: asteroidName.trailingAnchor, trailing: asteroidView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 10, paddingRight: 10, width: 40, height: 40)
-        asteroidImage.constraints(top: nil, bottom: asteroidView.centerYAnchor, leading: asteroidView.leadingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
-        asteroidImage.addConstraint(asteroidImageWidthConstraint)
-        asteroidImage.addConstraint(asteroidImageHeightConstraint)
     }
     
-    func render(model: AsteroidViewModel){
+    func render(model: AsteroidViewModel, indexPathElement: IndexPath.Element){
         
         //Сделать адекватное обновление топика с астероидом и динозавром
         
         dangerousGradientLayer.colors = [model.asteroidDangerousColor.startColor, model.asteroidDangerousColor.endColor]
         
-        asteroidImageWidthConstraint.constant = model.asteroidSize.width
-        asteroidImageHeightConstraint.constant = model.asteroidSize.height
+        let newOrigin = CGPoint(x: 5, y: 5)
+        asteroidImage.frame = CGRect(origin: newOrigin, size: CGSize(width: model.asteroidSize.width, height: model.asteroidSize.height))
+        //self.setNeedsLayout()
+        //self.layoutIfNeeded()
+        
         asteroidName.text = model.asteroidName
         asteroidDiameter.text = model.diameter
         asteroidTime.text = model.destinationTime
         asteroidDistance.text = model.distance
         asteroidEstimation.text = model.isDangerous
+        
+        addToDestroyButton.tag = indexPathElement
     }
 }

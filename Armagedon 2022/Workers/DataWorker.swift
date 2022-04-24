@@ -305,16 +305,27 @@ import UIKit
 protocol DataWorkerForAsteroidListProtocol{
     
     func requestAsteroidList(handler: @escaping () -> ())
+    
+    func requestNextAsteroidList(handler: @escaping () -> ())
+    
+    func addToDestroyingList(index: Int, handler: @escaping () -> ())
 }
 
-protocol DataWorkerCollectedData{
+protocol DataWorkerCollectedDataForAsteroidList{
     
     var asteroidsViewModel: [AsteroidViewModel] { get }
 }
 
+protocol DataWorkerCollectedDataForDestroyList{
+    
+    var asteroidsForDestroyViewModel: [AsteroidViewModel] { get }
+}
+
 protocol DataWorkerForDestroyListProtocol{
     
+    func requestDestroingList(handler: @escaping () -> ())
     
+    func clearDestroyingList(handler: @escaping () -> ())
 }
 
 protocol DataWorkerForFiltersProtocol{
@@ -328,7 +339,7 @@ protocol DataWorkerForFiltersProtocol{
     var filtersViewModel: [FiltersViewModel] { get }
 }
 
-class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListProtocol, DataWorkerForFiltersProtocol, DataWorkerCollectedData{
+class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListProtocol, DataWorkerForFiltersProtocol, DataWorkerCollectedDataForAsteroidList, DataWorkerCollectedDataForDestroyList{
     
     var coreDataWorker: CoreDataWorkerProtocol!
     var jsonDecoderWorker: JSONDecoderWorkerProtocol!
@@ -339,12 +350,17 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
     
     var asteroidsDataModel = [AsteroidDataModel]()
     var asteroidsViewModel = [AsteroidViewModel]()
+    var asteroidsForDestroyDataModel = [AsteroidDataModel]()
+    var asteroidsForDestroyViewModel = [AsteroidViewModel]()
     var filter = FilterDataModel()
     let filtersViewModel: [FiltersViewModel]  = [
-    
+        
         .init(title: "Ед. изм. расстояний", secondaryView: .segmenter("км", "л. орб.")),
         .init(title: "Показывать только опасные", secondaryView: .switcher)
     ]
+    
+    var currentURL: String = ""
+    var nextURL: String = ""
     
     func requestAsteroidList(handler: @escaping () -> ()){
         
@@ -353,61 +369,88 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
             let group = DispatchGroup() //Контроль потока
             
             let currentDate = self.dateWorker.currentDate //Текущая дата
-            let nextWeekDate = self.dateWorker.warp(fromDate: currentDate, onDays: 7) //Текущая дата + 7 дней(ограничение api)
+            let nextDate = self.dateWorker.warp(fromDate: currentDate, onDays: 1) //Текущая дата + max(7) дней (ограничение api)
             
             //Подготовка url
             var rawUrl = URLs.nasaURLForNearestObjects
             rawUrl = rawUrl.replacingOccurrences(of: "start_date=", with: "start_date=\(currentDate)")
-            rawUrl = rawUrl.replacingOccurrences(of: "end_date=", with: "end_date=\(nextWeekDate)")
+            rawUrl = rawUrl.replacingOccurrences(of: "end_date=", with: "end_date=\(nextDate)")
             let url = rawUrl.replacingOccurrences(of: "api_key=", with: "api_key=\(APIKeys.nasaAPIKey)")
             //
-            
-            var model: NearObjectsModel?
-            
-            group.enter()
-            //Запрос в сеть
-            self.networkWorker.getData(from: url) { result in
+            if self.currentURL != url{
                 
+                print("FROM NETWORK")
                 
-                switch result{
+                var model: NearObjectsModel?
+                
+                group.enter()
+                //Запрос в сеть
+                self.networkWorker.getData(from: url) { result in
                     
-                case .failure(let error):
                     
-                    print("Network Error: \(error.localizedDescription)")
+                    switch result{
+                        
+                    case .failure(let error):
+                        
+                        print("Network Error: \(error.localizedDescription)")
+                        
+                        
+                    case .success(let data):
+                        
+                        //Декодирование данных из сети в модель
+                        model = self.jsonDecoderWorker.decode(type: NearObjectsModel.self, data: data)
+                    }
                     
-                    
-                case .success(let data):
-                    
-                    //Декодирование данных из сети в модель
-                    model = self.jsonDecoderWorker.decode(type: NearObjectsModel.self, data: data)
+                    group.leave()
                 }
                 
-                group.leave()
-            }
-            
-            group.wait()//Ожидание завершения обработки нетворка
-            
-            guard let strongModel = model else { return }
-            
-            //Создание Data Model
-            let _ = strongModel.nearEarthObjects.map {
+                group.wait()//Ожидание завершения обработки нетворка
                 
-                $1.map { object in
+                guard let strongModel = model else { return }
+                
+                self.currentURL = strongModel.links.selfLink
+                self.nextURL = strongModel.links.next
+                
+                //Создание Data Model
+                let _ = strongModel.nearEarthObjects.map {
                     
-                    self.asteroidsDataModel.append(AsteroidDataModel(
-                        name: object.name,
-                        diameter: object.estimatedDiameter.meters.diameter,
-                        destinationTime: object.approachInfo[0].orbitingBody,
-                        distanceKm: Int(Float(object.approachInfo[0].missDistance.kilometers) ?? 0),
-                        distanceLunar: Int(Float(object.approachInfo[0].missDistance.lunar) ?? 0),
-                        isDangerous: object.isPotentiallyHazardousAsteroid,
-                        orbitingBody: object.approachInfo[0].closeApproachDate))
+                    $1.map { object in
+                        
+                        self.asteroidsDataModel.append(AsteroidDataModel(
+                            name: object.name,
+                            diameter: object.estimatedDiameter.meters.diameter,
+                            destinationTime: object.approachInfo[0].orbitingBody,
+                            distanceKm: Int(Float(object.approachInfo[0].missDistance.kilometers) ?? 0),
+                            distanceLunar: Int(Float(object.approachInfo[0].missDistance.lunar) ?? 0),
+                            isDangerous: object.isPotentiallyHazardousAsteroid,
+                            orbitingBody: object.approachInfo[0].closeApproachDate))
+                    }
+                }
+                
+                self.createViewModel()
+                
+                DispatchQueue.main.async {
+                    handler()
                 }
             }
+            else{
+                print("FROM DATA MODEL")
+                self.createViewModel()
+                DispatchQueue.main.async {
+                    handler()
+                }
+            }
+        }
+    }
+    
+    func requestNextAsteroidList(handler: @escaping () -> ()) {
+        
+        DispatchQueue.global(qos: .userInteractive).async {
             
-            self.createViewModel()
+            self.currentURL = self.nextURL
             
             DispatchQueue.main.async {
+                
                 handler()
             }
         }
@@ -453,12 +496,14 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
                 
                 switch dataObject.diameter{
                     
-                case 0...100:
+                case 0..<20:
+                    asteroidSize = CGSize(width: 20, height: 20)
+                case 20..<150:
+                    asteroidSize = CGSize(width: dataObject.diameter, height: dataObject.diameter)
+                case 150..<200:
                     asteroidSize = CGSize(width: 100, height: 100)
-                case 100...200:
-                    asteroidSize = CGSize(width: 150, height: 150)
                 case 200...:
-                    asteroidSize = CGSize(width: 250, height: 250)
+                    asteroidSize = CGSize(width: 150, height: 150)
                     
                 default:
                     asteroidSize = CGSize(width: 100, height: 100)
@@ -477,6 +522,25 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
         }
     }
     
+    func addToDestroyingList(index: Int, handler: @escaping () -> ()){
+        
+        var isContain: Bool = false
+        let asteroidForDestroy = asteroidsViewModel[index]
+        
+        for asteroid in asteroidsForDestroyViewModel{
+            
+            if asteroid == asteroidForDestroy{
+                
+                isContain = true
+            }
+        }
+        
+        if !isContain{
+            
+            asteroidsForDestroyViewModel.append(asteroidForDestroy)
+        }
+    }
+    
     func updateFilters(newFilter: FilterDataModel){
         
         self.filter = newFilter
@@ -484,5 +548,28 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
     
     func getFilters() -> FilterDataModel{
         return self.filter
+    }
+    
+    func requestDestroingList(handler: @escaping () -> ()) {
+        
+//        DispatchQueue.global(qos: .userInteractive).async {
+//
+//            DispatchQueue.main.async {
+//                handler()
+//            }
+//        }
+        handler()
+    }
+    
+    func clearDestroyingList(handler: @escaping () -> ()){
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            
+            self.asteroidsForDestroyViewModel = []
+            
+            DispatchQueue.main.async {
+                handler()
+            }
+        }
     }
 }

@@ -47,7 +47,7 @@ class ProjectCoordinator{
         //
 
         //Настройка вкладки с профилем пользователя
-        let destroyingTab = UINavigationController(rootViewController: DestroyListViewController())
+        let destroyingTab = UINavigationController(rootViewController: DestroyListViewController(dataWorker: self.dataWorker, data: self.dataWorker))
 
         destroyingTab.tabBarItem = UITabBarItem(title: "Уничтожение", image: Images.trashCan, tag: 1)
         //
@@ -61,8 +61,8 @@ class ProjectCoordinator{
         FiltersViewController(dataWorker: self.dataWorker)
     }
     
-    func createDestroyListViewController() -> UIViewController{
-        DestroyListViewController()
-    }
+//    func createDestroyListViewController() -> UIViewController{
+//        DestroyListViewController(dataWorker: self.dataWorker, data: self.dataWorker)
+//    }
 }
 

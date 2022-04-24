@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct AsteroidViewModel{
+struct AsteroidViewModel: Equatable{
     
     let asteroidImage: UIView
     let diameter: String
@@ -18,4 +18,9 @@ struct AsteroidViewModel{
     let asteroidName: String
     let asteroidDangerousColor: (startColor: CGColor, endColor: CGColor)
     let asteroidSize: CGSize
+    
+    static func == (lhs: AsteroidViewModel, rhs: AsteroidViewModel) -> Bool {
+        
+        lhs.asteroidName == rhs.asteroidName && lhs.asteroidSize == rhs.asteroidSize && lhs.distance == rhs.distance
+    }
 }

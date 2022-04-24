@@ -10,8 +10,9 @@ import UIKit
 class AsteroidListViewController: UIViewController {
     
     let dataWorker: DataWorkerForAsteroidListProtocol
-    let data: DataWorkerCollectedData
+    let data: DataWorkerCollectedDataForAsteroidList
     
+    //Таблица с астероидами
     let asteroidsCollectionView: UICollectionView = {
        
         let layout = UICollectionViewFlowLayout()
@@ -23,7 +24,15 @@ class AsteroidListViewController: UIViewController {
         return collection
     }()
     
-    init(dataWorker: DataWorkerForAsteroidListProtocol, data: DataWorkerCollectedData){
+    //индикатор загрузки
+    private let loadingView: LoadingBlurView = {
+       
+        let loadingView = LoadingBlurView(frame: .zero, blurStyle: .dark, activityStyle: .medium)
+        
+        return loadingView
+    }()
+    
+    init(dataWorker: DataWorkerForAsteroidListProtocol, data: DataWorkerCollectedDataForAsteroidList){
         
         self.dataWorker = dataWorker
         self.data = data
@@ -40,21 +49,36 @@ class AsteroidListViewController: UIViewController {
 
         configureView()
         configureSubview()
+        configureLoadingView()
         //configureAsteroidsCollectionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        dataWorker.requestAsteroidList{
+        loadingView.enableActivityWithAnimation {
             
-            self.asteroidsCollectionView.reloadData()
+            self.dataWorker.requestAsteroidList{
+                
+                self.asteroidsCollectionView.reloadData()
+                self.loadingView.disableActivityWithAnimation {}
+            }
         }
     }
     
     override func viewWillLayoutSubviews() {
         
+        super.viewWillLayoutSubviews()
+        
         layoutAsteroidsCollectionView()
+        
+        loadingView.frame = self.view.frame
+    }
+    
+    private func configureLoadingView(){
+        
+        view.addSubview(loadingView)
+        loadingView.frame = self.view.frame
     }
     
     func configureView(){
@@ -115,6 +139,14 @@ class AsteroidListViewController: UIViewController {
         
         self.navigationController?.pushViewController(viewToPush, animated: true)
     }
+    
+    @objc func addToDestroying(_ sender: UIButton){
+        
+        sender.showTapAnimation {
+            
+            self.dataWorker.addToDestroyingList(index: sender.tag) {}
+        }
+    }
 }
 
 extension AsteroidListViewController: UICollectionViewDataSource{
@@ -127,14 +159,25 @@ extension AsteroidListViewController: UICollectionViewDataSource{
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AsteroidCollectionViewCell.id, for: indexPath) as? AsteroidCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.render(model: data.asteroidsViewModel[indexPath.item])
+        cell.render(model: data.asteroidsViewModel[indexPath.item], indexPathElement: indexPath.item)
         
         return cell
     }
-    
-    
 }
 
 extension AsteroidListViewController: UICollectionViewDelegate{
     
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        if indexPath.row == data.asteroidsViewModel.count - 1{
+            
+            dataWorker.requestNextAsteroidList {
+                
+                self.dataWorker.requestAsteroidList {
+                    
+                    collectionView.reloadData()
+                }
+            }
+        }
+    }
 }

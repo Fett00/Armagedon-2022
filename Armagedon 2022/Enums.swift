@@ -19,7 +19,9 @@ enum Images{
 enum URLs{
     
     //URL для получения списка астероидов
-    static let nasaURLForNearestObjects = "https://api.nasa.gov/neo/rest/v1/feed?start_date=&end_date=&api_key="
+    //static let nasaURLForNearestObjects = "https://api.nasa.gov/neo/rest/v1/feed?start_date=&end_date=&api_key="
+    static let nasaURLForNearestObjects = "https://www.neowsapp.com/rest/v1/feed?start_date=&end_date=&detailed=false&api_key="
+
 }
 
 enum APIKeys{

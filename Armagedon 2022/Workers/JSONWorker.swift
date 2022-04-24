@@ -1,6 +1,6 @@
 //
 //  JSONWorker.swift
-//  DeliveryApp
+
 //
 //  Created by Садык Мусаев on 19.12.2021.
 //

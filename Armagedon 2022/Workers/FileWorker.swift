@@ -1,6 +1,6 @@
 //
 //  FileWorker.swift
-//  DeliveryApp
+
 //
 //  Created by Садык Мусаев on 25.01.2022.
 //

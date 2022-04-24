@@ -34,6 +34,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="S6u-Ub-rSg" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-100" id="8aI-F9-FYV"/>
+                            <constraint firstItem="S6u-Ub-rSg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="E48-bU-Zmx"/>
                             <constraint firstItem="fv9-Wy-JNO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="Rue-1L-x1N"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S6u-Ub-rSg" secondAttribute="trailing" constant="50" id="UmC-Ra-0fw"/>
                             <constraint firstItem="fv9-Wy-JNO" firstAttribute="top" secondItem="S6u-Ub-rSg" secondAttribute="bottom" constant="-9" id="X31-bJ-b7K"/>
@@ -48,7 +49,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Asteroid" width="540" height="540"/>
+        <image name="Asteroid" width="270" height="270"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

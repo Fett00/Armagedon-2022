@@ -1,6 +1,6 @@
 //
 //  UIView+Ext.swift
-//  DeliveryApp
+
 //
 //  Created by Садык Мусаев on 05.12.2021.
 //
@@ -9,7 +9,7 @@ import UIKit
 
 extension UIView {
     
-    func constraints(top: NSLayoutYAxisAnchor?, bottom: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingBottom: CGFloat, paddingleft: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat) {
+    func constraints(top: NSLayoutYAxisAnchor?, bottom: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?, paddingTop: CGFloat, paddingBottom: CGFloat, paddingLeft: CGFloat, paddingRight: CGFloat, width: CGFloat, height: CGFloat) {
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -23,7 +23,7 @@ extension UIView {
         }
         if let leading = leading {
             
-            self.leadingAnchor.constraint(equalTo: leading, constant: paddingleft).isActive = true
+            self.leadingAnchor.constraint(equalTo: leading, constant: paddingLeft).isActive = true
         }
         if let trailing = trailing {
             

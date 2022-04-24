@@ -1,6 +1,5 @@
 ////
 ////  DataWorker.swift
-////  DeliveryApp
 ////
 ////  Created by Садык Мусаев on 12.12.2021.
 ////
@@ -301,10 +300,16 @@
 //
 
 import Foundation
+import UIKit
 
 protocol DataWorkerForAsteroidListProtocol{
     
-    func requestAsteroidList()
+    func requestAsteroidList(handler: @escaping () -> ())
+}
+
+protocol DataWorkerCollectedData{
+    
+    var asteroidsViewModel: [AsteroidViewModel] { get }
 }
 
 protocol DataWorkerForDestroyListProtocol{
@@ -314,18 +319,34 @@ protocol DataWorkerForDestroyListProtocol{
 
 protocol DataWorkerForFiltersProtocol{
     
+    func updateFilters(newFilter: FilterDataModel)
     
+    func getFilters() -> FilterDataModel
+    
+    var filter: FilterDataModel { get set }
+    
+    var filtersViewModel: [FiltersViewModel] { get }
 }
 
-class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListProtocol, DataWorkerForFiltersProtocol{
+class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListProtocol, DataWorkerForFiltersProtocol, DataWorkerCollectedData{
     
     var coreDataWorker: CoreDataWorkerProtocol!
     var jsonDecoderWorker: JSONDecoderWorkerProtocol!
     var jsonEncoderWorker: JSONEncoderWorkerProtocol!
     var networkWorker: NetworkWorkerProtocol!
     var dateWorker: DateWorkerProtocol!
+    var imageWorker: ImageWorkerProtocol!
     
-    func requestAsteroidList(){
+    var asteroidsDataModel = [AsteroidDataModel]()
+    var asteroidsViewModel = [AsteroidViewModel]()
+    var filter = FilterDataModel()
+    let filtersViewModel: [FiltersViewModel]  = [
+    
+        .init(title: "Ед. изм. расстояний", secondaryView: .segmenter("км", "л. орб.")),
+        .init(title: "Показывать только опасные", secondaryView: .switcher)
+    ]
+    
+    func requestAsteroidList(handler: @escaping () -> ()){
         
         DispatchQueue.global(qos: .userInteractive).async {
             
@@ -354,7 +375,7 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
                     
                     print("Network Error: \(error.localizedDescription)")
                     
-                
+                    
                 case .success(let data):
                     
                     //Декодирование данных из сети в модель
@@ -367,6 +388,101 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
             group.wait()//Ожидание завершения обработки нетворка
             
             guard let strongModel = model else { return }
+            
+            //Создание Data Model
+            let _ = strongModel.nearEarthObjects.map {
+                
+                $1.map { object in
+                    
+                    self.asteroidsDataModel.append(AsteroidDataModel(
+                        name: object.name,
+                        diameter: object.estimatedDiameter.meters.diameter,
+                        destinationTime: object.approachInfo[0].orbitingBody,
+                        distanceKm: Int(Float(object.approachInfo[0].missDistance.kilometers) ?? 0),
+                        distanceLunar: Int(Float(object.approachInfo[0].missDistance.lunar) ?? 0),
+                        isDangerous: object.isPotentiallyHazardousAsteroid,
+                        orbitingBody: object.approachInfo[0].closeApproachDate))
+                }
+            }
+            
+            self.createViewModel()
+            
+            DispatchQueue.main.async {
+                handler()
+            }
         }
+    }
+    
+    func createViewModel(){
+        
+        self.asteroidsViewModel = []
+        //Создание View Model
+        let _ = self.asteroidsDataModel.map { dataObject in
+            
+            if (filter.showDangerousOnly && dataObject.isDangerous) || !(filter.showDangerousOnly){
+                
+                let computedDiameter: String
+                let isDangerous: String
+                let destination: String
+                let asteroidSize: CGSize
+                let dangerousColor: (startColor: CGColor, endColor: CGColor)
+                
+                if dataObject.diameter > 1100 {
+                    computedDiameter = "Диаметр: \(dataObject.diameter / 1000) км"
+                }
+                else{
+                    computedDiameter = "Диаметр: \(dataObject.diameter) м"
+                }
+                
+                if dataObject.isDangerous{
+                    isDangerous = "Опасность: опасен"
+                    dangerousColor = (Colors.dcL.cgColor, Colors.dcR.cgColor)
+                }
+                else{
+                    isDangerous = "Опасность: не опасен"
+                    dangerousColor = (Colors.ndcL.cgColor, Colors.ndcR.cgColor)
+                }
+                
+                switch self.filter.destinationType{
+                    
+                case .km:
+                    destination = "на расстояние \(dataObject.distanceKm) км"
+                case .lunar:
+                    destination = "на расстояние \(dataObject.distanceLunar) лунных орбит"
+                }
+                
+                switch dataObject.diameter{
+                    
+                case 0...100:
+                    asteroidSize = CGSize(width: 100, height: 100)
+                case 100...200:
+                    asteroidSize = CGSize(width: 150, height: 150)
+                case 200...:
+                    asteroidSize = CGSize(width: 250, height: 250)
+                    
+                default:
+                    asteroidSize = CGSize(width: 100, height: 100)
+                }
+                
+                let imageModel = AsteroidImageDataModel(asteroidName: dataObject.name, asteroidSize: .medium, isDangerous: dataObject.isDangerous, imageSize: CGSize(width: 400, height: 200) )
+                
+                self.asteroidsViewModel.append(AsteroidViewModel(
+                    asteroidImage: self.imageWorker.createViewWithAsteroidAndDinosaur(model: imageModel),
+                    diameter: computedDiameter,
+                    destinationTime: "Подлетает \(self.dateWorker.convertForViewModel(date: dataObject.destinationTime))",
+                    distance: destination,
+                    isDangerous: isDangerous,
+                    orbitingBody: dataObject.orbitingBody, asteroidName: dataObject.name, asteroidDangerousColor: dangerousColor, asteroidSize: asteroidSize))
+            }
+        }
+    }
+    
+    func updateFilters(newFilter: FilterDataModel){
+        
+        self.filter = newFilter
+    }
+    
+    func getFilters() -> FilterDataModel{
+        return self.filter
     }
 }

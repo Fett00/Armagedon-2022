@@ -1,6 +1,6 @@
 //
 //  ProjectCoordinator.swift
-//  DeliveryApp
+
 //
 //  Created by Садык Мусаев on 12.12.2021.
 //
@@ -28,6 +28,7 @@ class ProjectCoordinator{
         dataWorker.jsonEncoderWorker = jsonEncoderWorker
         dataWorker.networkWorker = networkWorker
         dataWorker.dateWorker = dateWorker
+        dataWorker.imageWorker = imageWorker
         
         imageWorker.fileWorker = fileWorker
         imageWorker.networkWorker = networkWorker
@@ -40,7 +41,7 @@ class ProjectCoordinator{
         tabBar.tabBar.backgroundColor = .secondarySystemFill
 
         //Настройка вкладки с меню
-        let asteroidsTab = UINavigationController(rootViewController: AsteroidListViewController(dataWorker: self.dataWorker))
+        let asteroidsTab = UINavigationController(rootViewController: AsteroidListViewController(dataWorker: self.dataWorker, data: self.dataWorker))
 
         asteroidsTab.tabBarItem = UITabBarItem(title: "Астероиды", image: Images.planet, tag: 0)
         //
@@ -57,7 +58,7 @@ class ProjectCoordinator{
     }
     
     func createFiltersViewController() -> UIViewController{
-        FiltersViewController()
+        FiltersViewController(dataWorker: self.dataWorker)
     }
     
     func createDestroyListViewController() -> UIViewController{

@@ -16,6 +16,12 @@ struct AsteroidImageDataModel{
         case big
     }
     
+    enum DangerousColor{
+        
+        case dangerous
+        case notDangerous
+    }
+    
     let asteroidName: String
     let asteroidSize: AsteroidSize
     let isDangerous: Bool

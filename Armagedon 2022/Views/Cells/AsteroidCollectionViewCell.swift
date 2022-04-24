@@ -11,14 +11,55 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
     
     static var id: String { AsteroidCollectionViewCell.description() }
     
+    private let asteroidView: UIImageView = {
+        
+        let view = UIImageView()
+        
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        
+        return view
+    }()
+    
+    private let dangerousGradientLayer: CAGradientLayer = {
+        
+        let gradient = CAGradientLayer()
+        
+        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+        
+        return gradient
+    }()
+    
     private let asteroidImage: UIImageView = {
+       
+        let imageView = UIImageView(image: Images.asteroid)
         
-        let imageView = UIImageView()
-        
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
         
         return imageView
+    }()
+    
+    private let asteroidImageWidthConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    
+    private let asteroidImageHeightConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    
+    private let dinoImage: UIImageView = {
+        
+        let imageView = UIImageView(image: Images.dino)
+        
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
+    
+    private let asteroidName: UITextField = {
+        
+        let textField = UITextField()
+    
+        textField.font = .boldSystemFont(ofSize: 30)
+        
+        return textField
     }()
     
     private let asteroidDiameter: UILabel = {
@@ -28,6 +69,7 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.textAlignment = .left
         label.numberOfLines = 1
+        label.font = UIFont.systemFont(ofSize:  16)
         label.setContentCompressionResistancePriority( .defaultHigh, for: .vertical)
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
         label.setContentCompressionResistancePriority( .defaultHigh, for: .horizontal)
@@ -36,13 +78,14 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let asteroidRange: UILabel = {
+    private let asteroidDistance: UILabel = {
         
         let label = UILabel()
         
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.textAlignment = .left
         label.numberOfLines = 1
+        label.font = UIFont.systemFont(ofSize:  16)
         label.setContentCompressionResistancePriority( .defaultHigh, for: .vertical)
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
         label.setContentCompressionResistancePriority( .defaultHigh, for: .horizontal)
@@ -58,6 +101,7 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.textAlignment = .left
         label.numberOfLines = 1
+        label.font = UIFont.systemFont(ofSize:  16)
         label.setContentCompressionResistancePriority( .defaultHigh, for: .vertical)
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
         label.setContentCompressionResistancePriority( .defaultHigh, for: .horizontal)
@@ -73,7 +117,7 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         
         button.layer.borderWidth = 0.2
         button.layer.cornerCurve = .continuous
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 15
         button.setTitle("УНИЧТОЖИТЬ", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = Colors.buttonColor
@@ -90,6 +134,7 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.textAlignment = .left
         label.numberOfLines = 1
+        label.font = UIFont.systemFont(ofSize:  16)
         label.setContentCompressionResistancePriority( .defaultHigh, for: .vertical)
         label.setContentHuggingPriority(.defaultLow, for: .vertical)
         label.setContentCompressionResistancePriority( .defaultHigh, for: .horizontal)
@@ -121,13 +166,13 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         let spacingY = 15.0
         //let widthX = cellFrame.maxX - originX * 2
         
-        let asteroidImageFrame = CGRect(x: cellFrame.minX,
+        let asteroidViewFrame = CGRect(x: cellFrame.minX,
                                         y: cellFrame.minY,
                                         width: cellFrame.width,
                                         height: cellFrame.midY - inset)
         
         let asteroidDiameterFrame = CGRect(x: originX,
-                                           y: asteroidImageFrame.maxY + spacingY,
+                                           y: asteroidViewFrame.maxY + spacingY,
                                            width: cellFrame.width - inset,
                                            height: labelHeight)
         
@@ -148,35 +193,51 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         
         let asteroidEstimationFrame = CGRect(x: originX,
                                              y: addToDestroyButtonFrame.midY - (labelHeight / 2),
-                                             width: ((cellFrame.width / 3) * 2) - (inset * 2) - spacing,
+                                             width: ((cellFrame.width / 3) * 2) - (inset * 3) - spacing,
                                              height: labelHeight)
         
-        asteroidImage.frame = asteroidImageFrame
+        asteroidView.frame = asteroidViewFrame
         asteroidDiameter.frame = asteroidDiameterFrame
         asteroidTime.frame = asteroidTimeFrame
-        asteroidRange.frame = asteroidRangeFrame
+        asteroidDistance.frame = asteroidRangeFrame
         asteroidEstimation.frame = asteroidEstimationFrame
         addToDestroyButton.frame = addToDestroyButtonFrame
+        
+        dangerousGradientLayer.frame = asteroidViewFrame
     }
     
     func configureCell(){
         
-        self.addSubview(asteroidImage, asteroidDiameter, asteroidTime, asteroidRange, asteroidEstimation, addToDestroyButton)
+        self.addSubview(asteroidView, asteroidDiameter, asteroidTime, asteroidDistance, asteroidEstimation, addToDestroyButton)
         
         self.backgroundColor = .systemBackground
         self.layer.cornerCurve = .continuous
         self.layer.cornerRadius = 20
         self.clipsToBounds = true
+        self.layer.masksToBounds = true
         self.backgroundColor = .secondarySystemFill
         
-        asteroidImage.backgroundColor = .blue
-        asteroidDiameter.text = "Диаметр: "
-        asteroidTime.text = "Подлетает "
-        asteroidRange.text = "на расстояние "
-        asteroidEstimation.text = "Оценка: "
+        asteroidView.layer.addSublayer(dangerousGradientLayer)
+        asteroidView.addSubview(asteroidName, dinoImage, asteroidImage)
+        asteroidName.constraints(top: nil, bottom: asteroidView.bottomAnchor, leading: asteroidView.leadingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 10, paddingLeft: 10, paddingRight: 0, width: 0, height: 0)
+        dinoImage.constraints(top: nil, bottom: asteroidView.bottomAnchor, leading: asteroidName.trailingAnchor, trailing: asteroidView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 10, paddingRight: 10, width: 40, height: 40)
+        asteroidImage.constraints(top: nil, bottom: asteroidView.centerYAnchor, leading: asteroidView.leadingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
+        asteroidImage.addConstraint(asteroidImageWidthConstraint)
+        asteroidImage.addConstraint(asteroidImageHeightConstraint)
     }
     
-    func render(){
+    func render(model: AsteroidViewModel){
         
+        //Сделать адекватное обновление топика с астероидом и динозавром
+        
+        dangerousGradientLayer.colors = [model.asteroidDangerousColor.startColor, model.asteroidDangerousColor.endColor]
+        
+        asteroidImageWidthConstraint.constant = model.asteroidSize.width
+        asteroidImageHeightConstraint.constant = model.asteroidSize.height
+        asteroidName.text = model.asteroidName
+        asteroidDiameter.text = model.diameter
+        asteroidTime.text = model.destinationTime
+        asteroidDistance.text = model.distance
+        asteroidEstimation.text = model.isDangerous
     }
 }

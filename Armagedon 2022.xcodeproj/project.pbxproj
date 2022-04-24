@@ -29,8 +29,15 @@
 		5A02CB0A28085F8C00A7A19B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB0828085F8C00A7A19B /* Enums.swift */; };
 		5A02CB1328087C0F00A7A19B /* DateWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB1228087C0F00A7A19B /* DateWorker.swift */; };
 		5A02CB172808993E00A7A19B /* AsteroidsNetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A02CB162808993E00A7A19B /* AsteroidsNetworkModels.swift */; };
+		5A2F72E12811606F00A3963E /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2F72E02811606F00A3963E /* FiltersViewModel.swift */; };
 		5A728E382808BBB800F850F6 /* AsteroidCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A728E372808BBB800F850F6 /* AsteroidCollectionViewCell.swift */; };
 		5A728E3A2808D51700F850F6 /* AsteroidDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A728E392808D51700F850F6 /* AsteroidDataModel.swift */; };
+		5A728E3D2808E5A300F850F6 /* AsteroidViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A728E3C2808DFBE00F850F6 /* AsteroidViewModel.swift */; };
+		5A728E3F2809FB4A00F850F6 /* AsteroidImageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A728E3E2809FB4A00F850F6 /* AsteroidImageDataModel.swift */; };
+		5A728E41280DC4BB00F850F6 /* FilterDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A728E40280DC4BB00F850F6 /* FilterDataModel.swift */; };
+		5A7C34E92815878A00ACE404 /* FilterCellWithSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34E82815878A00ACE404 /* FilterCellWithSwitcher.swift */; };
+		5A7C34EB281587A500ACE404 /* FilterCellWithSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34EA281587A400ACE404 /* FilterCellWithSegment.swift */; };
+		5A7C34ED28159E9600ACE404 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34EC28159E9600ACE404 /* Protocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,8 +65,15 @@
 		5A02CB0828085F8C00A7A19B /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		5A02CB1228087C0F00A7A19B /* DateWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateWorker.swift; sourceTree = "<group>"; };
 		5A02CB162808993E00A7A19B /* AsteroidsNetworkModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidsNetworkModels.swift; sourceTree = "<group>"; };
+		5A2F72E02811606F00A3963E /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
 		5A728E372808BBB800F850F6 /* AsteroidCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A728E392808D51700F850F6 /* AsteroidDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidDataModel.swift; sourceTree = "<group>"; };
+		5A728E3C2808DFBE00F850F6 /* AsteroidViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidViewModel.swift; sourceTree = "<group>"; };
+		5A728E3E2809FB4A00F850F6 /* AsteroidImageDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsteroidImageDataModel.swift; sourceTree = "<group>"; };
+		5A728E40280DC4BB00F850F6 /* FilterDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDataModel.swift; sourceTree = "<group>"; };
+		5A7C34E82815878A00ACE404 /* FilterCellWithSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCellWithSwitcher.swift; sourceTree = "<group>"; };
+		5A7C34EA281587A400ACE404 /* FilterCellWithSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCellWithSegment.swift; sourceTree = "<group>"; };
+		5A7C34EC28159E9600ACE404 /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +110,7 @@
 				5A02CACF28085EFE00A7A19B /* SceneDelegate.swift */,
 				5A02CB0728085F8B00A7A19B /* ProjectCoordinator.swift */,
 				5A02CB0828085F8C00A7A19B /* Enums.swift */,
+				5A7C34EC28159E9600ACE404 /* Protocols.swift */,
 				5A02CAF728085F8200A7A19B /* Views */,
 				5A02CAE928085F8100A7A19B /* Workers */,
 				5A02CB152808993E00A7A19B /* Models */,
@@ -136,9 +151,9 @@
 		5A02CAF728085F8200A7A19B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5A02CAF828085F8200A7A19B /* DestroyListViewController.swift */,
-				5A02CAF928085F8200A7A19B /* FiltersViewController.swift */,
 				5A02CAFA28085F8200A7A19B /* AsteroidListViewController.swift */,
+				5A02CAF928085F8200A7A19B /* FiltersViewController.swift */,
+				5A02CAF828085F8200A7A19B /* DestroyListViewController.swift */,
 				5A02CB142808914600A7A19B /* Cells */,
 			);
 			path = Views;
@@ -148,6 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				5A728E372808BBB800F850F6 /* AsteroidCollectionViewCell.swift */,
+				5A7C34E82815878A00ACE404 /* FilterCellWithSwitcher.swift */,
+				5A7C34EA281587A400ACE404 /* FilterCellWithSegment.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -155,6 +172,7 @@
 		5A02CB152808993E00A7A19B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5A728E3B2808DFB400F850F6 /* ViewModel */,
 				5A728E362808B57E00F850F6 /* DataModels */,
 				5A728E352808B26500F850F6 /* CoreDataModels */,
 				5A728E342808B25F00F850F6 /* NetworkModels */,
@@ -181,8 +199,19 @@
 			isa = PBXGroup;
 			children = (
 				5A728E392808D51700F850F6 /* AsteroidDataModel.swift */,
+				5A728E3E2809FB4A00F850F6 /* AsteroidImageDataModel.swift */,
+				5A728E40280DC4BB00F850F6 /* FilterDataModel.swift */,
 			);
 			path = DataModels;
+			sourceTree = "<group>";
+		};
+		5A728E3B2808DFB400F850F6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5A728E3C2808DFBE00F850F6 /* AsteroidViewModel.swift */,
+				5A2F72E02811606F00A3963E /* FiltersViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +290,8 @@
 				5A02CAE828085F7800A7A19B /* UIView+Ext.swift in Sources */,
 				5A02CB0128085F8200A7A19B /* UserDefaultsWorker.swift in Sources */,
 				5A02CAE728085F7800A7A19B /* UIViewController+Ext.swift in Sources */,
+				5A7C34E92815878A00ACE404 /* FilterCellWithSwitcher.swift in Sources */,
+				5A728E3D2808E5A300F850F6 /* AsteroidViewModel.swift in Sources */,
 				5A02CAFD28085F8200A7A19B /* CoreDataWorker.swift in Sources */,
 				5A02CB172808993E00A7A19B /* AsteroidsNetworkModels.swift in Sources */,
 				5A02CB0928085F8C00A7A19B /* ProjectCoordinator.swift in Sources */,
@@ -272,11 +303,16 @@
 				5A728E3A2808D51700F850F6 /* AsteroidDataModel.swift in Sources */,
 				5A02CB0328085F8200A7A19B /* ImageWorker.swift in Sources */,
 				5A02CAFB28085F8200A7A19B /* DataWorker.swift in Sources */,
+				5A2F72E12811606F00A3963E /* FiltersViewModel.swift in Sources */,
+				5A7C34EB281587A500ACE404 /* FilterCellWithSegment.swift in Sources */,
+				5A728E3F2809FB4A00F850F6 /* AsteroidImageDataModel.swift in Sources */,
 				5A02CB0528085F8200A7A19B /* FiltersViewController.swift in Sources */,
 				5A02CB0028085F8200A7A19B /* FileWorker.swift in Sources */,
+				5A7C34ED28159E9600ACE404 /* Protocols.swift in Sources */,
 				5A728E382808BBB800F850F6 /* AsteroidCollectionViewCell.swift in Sources */,
 				5A02CB0A28085F8C00A7A19B /* Enums.swift in Sources */,
 				5A02CB1328087C0F00A7A19B /* DateWorker.swift in Sources */,
+				5A728E41280DC4BB00F850F6 /* FilterDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

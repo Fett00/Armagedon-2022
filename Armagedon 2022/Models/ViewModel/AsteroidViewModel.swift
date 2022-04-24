@@ -9,11 +9,13 @@ import UIKit
 
 struct AsteroidViewModel{
     
-    let asteroidImage: UIImage
+    let asteroidImage: UIView
     let diameter: String
     let destinationTime: String
     let distance: String
     let isDangerous: String
     let orbitingBody: String
     let asteroidName: String
+    let asteroidDangerousColor: (startColor: CGColor, endColor: CGColor)
+    let asteroidSize: CGSize
 }

@@ -1,6 +1,6 @@
 //
 //  CoreDataWorker.swift
-//  DeliveryApp
+
 //
 //  Created by Садык Мусаев on 12.12.2021.
 //

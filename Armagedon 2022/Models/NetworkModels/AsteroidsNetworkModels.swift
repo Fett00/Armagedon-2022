@@ -28,7 +28,14 @@ struct Links: Decodable{
     
     let next: String
     let prev: String
-    let `self`: String
+    let selfLink: String
+    
+    enum CodingKeys: String, CodingKey{
+        
+        case next = "next"
+        case prev = "prev"
+        case selfLink = "self"
+    }
 }
 
 struct NearEarthObjects: Decodable{

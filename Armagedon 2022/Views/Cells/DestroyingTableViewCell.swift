@@ -52,6 +52,18 @@ class DestroyingTableViewCell: UITableViewCell {
         return label
     }()
     
+    //Время прибытия
+    private let asteroidTime: UILabel = {
+        
+        let label = UILabel()
+        
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        label.setContentHuggingPriority(.defaultLow, for: .vertical)
+        
+        return label
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -64,7 +76,7 @@ class DestroyingTableViewCell: UITableViewCell {
     
     private func configurateCell(){
 
-        self.contentView.addSubview(asteroidImage, asteroidName, asteroidDistance)
+        self.contentView.addSubview(asteroidImage, asteroidName, asteroidTime, asteroidDistance)
         self.contentView.clipsToBounds = true
         self.selectionStyle = .none
         
@@ -72,13 +84,16 @@ class DestroyingTableViewCell: UITableViewCell {
         
         asteroidName.constraints(top: self.contentView.topAnchor, bottom: nil, leading: asteroidImage.trailingAnchor, trailing: self.contentView.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingLeft: 20, paddingRight: 10, width: 0, height: 0)
         
-        asteroidDistance.constraints(top: asteroidName.bottomAnchor, bottom: self.contentView.bottomAnchor, leading: asteroidImage.trailingAnchor, trailing: self.contentView.trailingAnchor, paddingTop: 10, paddingBottom: 20, paddingLeft: 20, paddingRight: 10, width: 0, height: 0)
+        asteroidTime.constraints(top: asteroidName.bottomAnchor, bottom: nil, leading: asteroidImage.trailingAnchor, trailing: self.contentView.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingLeft: 20, paddingRight: 10, width: 0, height: 0)
+        
+        asteroidDistance.constraints(top: asteroidTime.bottomAnchor, bottom: self.contentView.bottomAnchor, leading: asteroidImage.trailingAnchor, trailing: self.contentView.trailingAnchor, paddingTop: 5, paddingBottom: 20, paddingLeft: 20, paddingRight: 10, width: 0, height: 0)
     }
     
     func setUpCell(asteroid: AsteroidViewModel){
         
         self.asteroidName.text = asteroid.asteroidName
         self.asteroidDistance.text = asteroid.distance
+        self.asteroidTime.text = asteroid.destinationTime
         self.asteroidImage.backgroundColor = UIColor(cgColor: asteroid.asteroidDangerousColor.endColor)
         //self.asteroidImage.text = String(meal.price) + " ₽"
     }

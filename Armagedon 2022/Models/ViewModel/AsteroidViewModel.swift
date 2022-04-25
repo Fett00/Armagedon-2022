@@ -18,9 +18,18 @@ struct AsteroidViewModel: Equatable{
     let asteroidName: String
     let asteroidDangerousColor: (startColor: CGColor, endColor: CGColor)
     let asteroidSize: CGSize
+    let detailApproachViewModel: [DetailApproachViewModel]
     
     static func == (lhs: AsteroidViewModel, rhs: AsteroidViewModel) -> Bool {
         
         lhs.asteroidName == rhs.asteroidName && lhs.asteroidSize == rhs.asteroidSize && lhs.distance == rhs.distance
     }
+}
+
+struct DetailApproachViewModel{
+    
+    let distance: String
+    let orbitingBody: String
+    let velocity: String
+    let destinationTime: String
 }

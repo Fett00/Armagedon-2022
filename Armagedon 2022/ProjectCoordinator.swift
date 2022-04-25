@@ -62,7 +62,7 @@ class ProjectCoordinator{
     }
     
     func createDetailViewController(model: AsteroidViewModel) -> UIViewController{
-        DetailViewController(model: model)
+        DetailViewController(model: model, dataWorker: self.dataWorker)
     }
     
 //    func createDestroyListViewController() -> UIViewController{

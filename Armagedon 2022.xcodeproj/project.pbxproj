@@ -41,6 +41,7 @@
 		5A7C34F12815E18600ACE404 /* DestroyingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34F02815E18600ACE404 /* DestroyingTableViewCell.swift */; };
 		5A7C34F42815E28400ACE404 /* LoadingBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34F32815E28400ACE404 /* LoadingBlurView.swift */; };
 		5A7C34F628168A1700ACE404 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34F528168A1700ACE404 /* DetailViewController.swift */; };
+		5A7C34F828169FCD00ACE404 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34F728169FCD00ACE404 /* DetailCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		5A7C34F02815E18600ACE404 /* DestroyingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestroyingTableViewCell.swift; sourceTree = "<group>"; };
 		5A7C34F32815E28400ACE404 /* LoadingBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingBlurView.swift; sourceTree = "<group>"; };
 		5A7C34F528168A1700ACE404 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		5A7C34F728169FCD00ACE404 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				5A7C34E82815878A00ACE404 /* FilterCellWithSwitcher.swift */,
 				5A7C34EA281587A400ACE404 /* FilterCellWithSegment.swift */,
 				5A7C34F02815E18600ACE404 /* DestroyingTableViewCell.swift */,
+				5A7C34F728169FCD00ACE404 /* DetailCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				5A728E382808BBB800F850F6 /* AsteroidCollectionViewCell.swift in Sources */,
 				5A02CB0A28085F8C00A7A19B /* Enums.swift in Sources */,
 				5A02CB1328087C0F00A7A19B /* DateWorker.swift in Sources */,
+				5A7C34F828169FCD00ACE404 /* DetailCollectionViewCell.swift in Sources */,
 				5A7C34F42815E28400ACE404 /* LoadingBlurView.swift in Sources */,
 				5A728E41280DC4BB00F850F6 /* FilterDataModel.swift in Sources */,
 			);

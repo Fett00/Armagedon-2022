@@ -16,4 +16,14 @@ struct AsteroidDataModel{
     let distanceLunar: Int
     let isDangerous: Bool
     let orbitingBody: String
+    let detailApproachDataModel: [DetailApproachDataModel]
+}
+
+struct DetailApproachDataModel{
+    
+    let distanceKm: Int
+    let distanceLunar: Int
+    let orbitingBody: String
+    let velocity: Int
+    let destinationTime: String
 }

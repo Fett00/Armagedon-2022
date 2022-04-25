@@ -180,4 +180,11 @@ extension AsteroidListViewController: UICollectionViewDelegate{
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let detailViewController = UINavigationController(rootViewController: ProjectCoordinator.shared.createDetailViewController(model: self.data.asteroidsViewModel[indexPath.item]))
+        
+        self.present(detailViewController, animated: true, completion: nil)
+    }
 }

@@ -82,12 +82,14 @@ struct ApproachInfo: Decodable{
     let orbitingBody: String
     let closeApproachDate: String
     let missDistance: MissDistance
+    let velocity: Velocity
     
     enum CodingKeys: String, CodingKey{
         
         case orbitingBody = "close_approach_date"
         case closeApproachDate = "orbiting_body"
         case missDistance = "miss_distance"
+        case velocity = "relative_velocity"
     }
 }
 
@@ -95,4 +97,14 @@ struct MissDistance: Decodable{
     
     let lunar: String
     let kilometers: String
+}
+
+struct Velocity: Decodable{
+    
+    let kmps: String
+    
+    enum CodingKeys: String, CodingKey{
+        
+        case kmps = "kilometers_per_second"
+    }
 }

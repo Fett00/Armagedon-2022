@@ -309,6 +309,8 @@ protocol DataWorkerForAsteroidListProtocol{
     func requestNextAsteroidList(handler: @escaping () -> ())
     
     func addToDestroyingList(index: Int, handler: @escaping () -> ())
+    
+    func addToDestroyingList(asteroidForDestroy: AsteroidViewModel, handler: @escaping () -> ())
 }
 
 protocol DataWorkerCollectedDataForAsteroidList{
@@ -339,7 +341,12 @@ protocol DataWorkerForFiltersProtocol{
     var filtersViewModel: [FiltersViewModel] { get }
 }
 
-class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListProtocol, DataWorkerForFiltersProtocol, DataWorkerCollectedDataForAsteroidList, DataWorkerCollectedDataForDestroyList{
+protocol DataWorkerForDetailListProtocol{
+    
+    func addToDestroyingList(asteroidForDestroy: AsteroidViewModel, handler: @escaping () -> ())
+}
+
+class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListProtocol, DataWorkerForFiltersProtocol, DataWorkerCollectedDataForAsteroidList, DataWorkerCollectedDataForDestroyList, DataWorkerForDetailListProtocol{
     
     var coreDataWorker: CoreDataWorkerProtocol!
     var jsonDecoderWorker: JSONDecoderWorkerProtocol!
@@ -416,6 +423,11 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
                     
                     $1.map { object in
                         
+                        let detailApproachDataModel = object.approachInfo.map{
+                            
+                            DetailApproachDataModel(distanceKm: Int(Float($0.missDistance.kilometers) ?? 0), distanceLunar: Int(Float($0.missDistance.lunar) ?? 0), orbitingBody: $0.closeApproachDate , velocity: Int(Float($0.velocity.kmps) ?? 0), destinationTime: $0.orbitingBody)
+                        }
+                        
                         self.asteroidsDataModel.append(AsteroidDataModel(
                             name: object.name,
                             diameter: object.estimatedDiameter.meters.diameter,
@@ -423,7 +435,7 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
                             distanceKm: Int(Float(object.approachInfo[0].missDistance.kilometers) ?? 0),
                             distanceLunar: Int(Float(object.approachInfo[0].missDistance.lunar) ?? 0),
                             isDangerous: object.isPotentiallyHazardousAsteroid,
-                            orbitingBody: object.approachInfo[0].closeApproachDate))
+                            orbitingBody: object.approachInfo[0].closeApproachDate, detailApproachDataModel: detailApproachDataModel))
                     }
                 }
                 
@@ -461,6 +473,23 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
         self.asteroidsViewModel = []
         //Создание View Model
         let _ = self.asteroidsDataModel.map { dataObject in
+            
+            let detailApproachViewModel: [DetailApproachViewModel] = dataObject.detailApproachDataModel.map{
+                
+                let destination: String
+                let velocity: String = "со скоростью \($0.velocity) км/с"
+                let orbitingBody: String = "Орбитой вращения является: \(dataObject.orbitingBody)"
+                
+                switch self.filter.destinationType{
+                    
+                case .km:
+                    destination = "на расстояние \(dataObject.distanceKm) км"
+                case .lunar:
+                    destination = "на расстояние \(dataObject.distanceLunar) лунных орбит"
+                }
+                
+                return DetailApproachViewModel(distance: destination, orbitingBody: orbitingBody, velocity: velocity, destinationTime: "Подлетает \(self.dateWorker.convertForViewModel(date: dataObject.destinationTime))")
+            }
             
             if (filter.showDangerousOnly && dataObject.isDangerous) || !(filter.showDangerousOnly){
                 
@@ -517,7 +546,7 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
                     destinationTime: "Подлетает \(self.dateWorker.convertForViewModel(date: dataObject.destinationTime))",
                     distance: destination,
                     isDangerous: isDangerous,
-                    orbitingBody: dataObject.orbitingBody, asteroidName: dataObject.name, asteroidDangerousColor: dangerousColor, asteroidSize: asteroidSize))
+                    orbitingBody: "Орбитой вращения является \(dataObject.orbitingBody)", asteroidName: dataObject.name, asteroidDangerousColor: dangerousColor, asteroidSize: asteroidSize, detailApproachViewModel: detailApproachViewModel))
             }
         }
     }
@@ -526,6 +555,24 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
         
         var isContain: Bool = false
         let asteroidForDestroy = asteroidsViewModel[index]
+        
+        for asteroid in asteroidsForDestroyViewModel{
+            
+            if asteroid == asteroidForDestroy{
+                
+                isContain = true
+            }
+        }
+        
+        if !isContain{
+            
+            asteroidsForDestroyViewModel.append(asteroidForDestroy)
+        }
+    }
+    
+    func addToDestroyingList(asteroidForDestroy: AsteroidViewModel, handler: @escaping () -> ()){
+        
+        var isContain: Bool = false
         
         for asteroid in asteroidsForDestroyViewModel{
             

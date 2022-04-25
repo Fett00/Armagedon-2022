@@ -200,14 +200,13 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         asteroidEstimation.frame = asteroidEstimationFrame
         addToDestroyButton.frame = addToDestroyButtonFrame
         
-        dangerousGradientLayer.frame = asteroidViewFrame
+        dangerousGradientLayer.frame = asteroidView.bounds
     }
     
     func configureCell(){
         
         self.addSubview(asteroidView, asteroidDiameter, asteroidTime, asteroidDistance, asteroidEstimation, addToDestroyButton)
         
-        self.backgroundColor = .systemBackground
         self.layer.cornerCurve = .continuous
         self.layer.cornerRadius = 20
         self.clipsToBounds = true

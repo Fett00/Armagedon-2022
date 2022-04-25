@@ -155,7 +155,7 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         
         let cellFrame = self.bounds
-        let buttonHeight = 50.0
+        _ = 50.0
         let labelHeight = asteroidDiameter.font.lineHeight
         let originX = 10.0
         let inset = 15.0

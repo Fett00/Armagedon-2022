@@ -148,7 +148,7 @@ final class DestroyListViewController: UIViewController {
     //Вызов команды зачистки
     @objc private func callBruce(_ sender: UIButton){
         
-        let popup = UIAlertController(title: "Вызов бригады", message: "Бригады им. Брюса Уиллиса в пути", preferredStyle: .alert)
+        let popup = UIAlertController(title: "Вызов бригады", message: "Бригады им. Брюса Уиллиса в пути 💪😎", preferredStyle: .alert)
         popup.addAction(.init(title: "Ура!", style: .default, handler: nil))
         
         self.present(popup, animated: true) {

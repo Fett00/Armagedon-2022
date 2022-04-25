@@ -138,6 +138,10 @@ class AsteroidListViewController: UIViewController {
         let viewToPush = ProjectCoordinator.shared.createFiltersViewController()
         
         self.navigationController?.pushViewController(viewToPush, animated: true)
+        
+        let topRow = IndexPath(row: 0, section: 0)
+        
+        self.asteroidsCollectionView.scrollToItem(at: topRow, at: .centeredVertically, animated: false)
     }
     
     @objc func addToDestroying(_ sender: UIButton){
@@ -169,7 +173,7 @@ extension AsteroidListViewController: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        if indexPath.row == data.asteroidsViewModel.count - 1{
+        if indexPath.row == data.asteroidsViewModel.count - 2{
             
             dataWorker.requestNextAsteroidList {
                 

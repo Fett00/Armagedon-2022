@@ -40,6 +40,7 @@
 		5A7C34EF2815E17D00ACE404 /* DestroyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34EE2815E17D00ACE404 /* DestroyListViewController.swift */; };
 		5A7C34F12815E18600ACE404 /* DestroyingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34F02815E18600ACE404 /* DestroyingTableViewCell.swift */; };
 		5A7C34F42815E28400ACE404 /* LoadingBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34F32815E28400ACE404 /* LoadingBlurView.swift */; };
+		5A7C34F628168A1700ACE404 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7C34F528168A1700ACE404 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		5A7C34EE2815E17D00ACE404 /* DestroyListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestroyListViewController.swift; sourceTree = "<group>"; };
 		5A7C34F02815E18600ACE404 /* DestroyingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestroyingTableViewCell.swift; sourceTree = "<group>"; };
 		5A7C34F32815E28400ACE404 /* LoadingBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingBlurView.swift; sourceTree = "<group>"; };
+		5A7C34F528168A1700ACE404 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 				5A02CAFA28085F8200A7A19B /* AsteroidListViewController.swift */,
 				5A02CAF928085F8200A7A19B /* FiltersViewController.swift */,
 				5A7C34EE2815E17D00ACE404 /* DestroyListViewController.swift */,
+				5A7C34F528168A1700ACE404 /* DetailViewController.swift */,
 				5A02CB142808914600A7A19B /* Cells */,
 				5A7C34F22815E28400ACE404 /* CustomViews */,
 			);
@@ -305,6 +308,7 @@
 				5A02CB0128085F8200A7A19B /* UserDefaultsWorker.swift in Sources */,
 				5A02CAE728085F7800A7A19B /* UIViewController+Ext.swift in Sources */,
 				5A7C34E92815878A00ACE404 /* FilterCellWithSwitcher.swift in Sources */,
+				5A7C34F628168A1700ACE404 /* DetailViewController.swift in Sources */,
 				5A728E3D2808E5A300F850F6 /* AsteroidViewModel.swift in Sources */,
 				5A02CAFD28085F8200A7A19B /* CoreDataWorker.swift in Sources */,
 				5A02CB172808993E00A7A19B /* AsteroidsNetworkModels.swift in Sources */,

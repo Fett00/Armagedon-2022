@@ -14,6 +14,7 @@ enum Images{
     static let filter = UIImage(systemName: "line.3.horizontal.decrease")!
     static let asteroid = UIImage(named: "Asteroid")!
     static let dino = UIImage(named: "Dino")!
+    static let backArrow = UIImage(systemName: "arrow.down")!
 }
 
 enum URLs{

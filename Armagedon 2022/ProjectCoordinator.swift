@@ -61,6 +61,10 @@ class ProjectCoordinator{
         FiltersViewController(dataWorker: self.dataWorker)
     }
     
+    func createDetailViewController(model: AsteroidViewModel) -> UIViewController{
+        DetailViewController(model: model)
+    }
+    
 //    func createDestroyListViewController() -> UIViewController{
 //        DestroyListViewController(dataWorker: self.dataWorker, data: self.dataWorker)
 //    }

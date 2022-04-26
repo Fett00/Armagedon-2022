@@ -469,8 +469,8 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
     }
     
     func createViewModel(){
-        
-        self.asteroidsViewModel = []
+
+        var newAsteroidsViewModel: [AsteroidViewModel] = []
         //Создание View Model
         let _ = self.asteroidsDataModel.map { dataObject in
             
@@ -540,7 +540,7 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
                 
                 let imageModel = AsteroidImageDataModel(asteroidName: dataObject.name, asteroidSize: .medium, isDangerous: dataObject.isDangerous, imageSize: CGSize(width: 400, height: 200) )
                 
-                self.asteroidsViewModel.append(AsteroidViewModel(
+                newAsteroidsViewModel.append(AsteroidViewModel(
                     asteroidImage: self.imageWorker.createViewWithAsteroidAndDinosaur(model: imageModel),
                     diameter: computedDiameter,
                     destinationTime: "Подлетает \(self.dateWorker.convertForViewModel(date: dataObject.destinationTime))",
@@ -549,6 +549,8 @@ class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListPro
                     orbitingBody: "Орбитой вращения является \(dataObject.orbitingBody)", asteroidName: dataObject.name, asteroidDangerousColor: dangerousColor, asteroidSize: asteroidSize, detailApproachViewModel: detailApproachViewModel))
             }
         }
+        
+        self.asteroidsViewModel = newAsteroidsViewModel
     }
     
     func addToDestroyingList(index: Int, handler: @escaping () -> ()){

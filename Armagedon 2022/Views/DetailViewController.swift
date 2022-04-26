@@ -181,10 +181,8 @@ final class DetailViewController: UIViewController {
         let insets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         let spacing = 20.0
         let collectionWidth = detailCollectionView.frame.width
-        let itemHeight = UIFont.preferredFont(forTextStyle: .title3).lineHeight * 4 + 15 * 6 + 40
-        let itemWidth = (collectionWidth - insets.left - insets.right - spacing)
         
-        switch itemWidth{
+        switch collectionWidth{
 
         case ..<390:
             cellAtRow = 1
@@ -195,6 +193,9 @@ final class DetailViewController: UIViewController {
         default:
             cellAtRow = 1
         }
+        
+        let itemHeight = UIFont.preferredFont(forTextStyle: .title3).lineHeight * 4 + 15 * 6 + 40
+        let itemWidth = (collectionWidth - insets.left - insets.right - spacing * cellAtRow)
         
         flowLayout.minimumInteritemSpacing = spacing
         flowLayout.minimumLineSpacing = spacing

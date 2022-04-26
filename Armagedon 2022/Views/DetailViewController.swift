@@ -119,11 +119,11 @@ final class DetailViewController: UIViewController {
         
         super.init(nibName: nil, bundle: nil)
         
-        confView()
-        confSubview()
-        confHeaderView()
-        confCollectionView()
-        loadDataForHeader()
+//        confView()
+//        confSubview()
+//        confHeaderView()
+//        confCollectionView()
+//        loadDataForHeader()
     }
     
     required init?(coder: NSCoder) {
@@ -133,7 +133,11 @@ final class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        confView()
+        confSubview()
+        confHeaderView()
+        confCollectionView()
+        loadDataForHeader()
     }
     
     override func viewDidLayoutSubviews() {
@@ -166,24 +170,37 @@ final class DetailViewController: UIViewController {
         let safe = self.view.safeAreaLayoutGuide
         
         headerView.constraints(top: safe.topAnchor, bottom: nil, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: 20, width: 0, height: 0)
-        detailCollectionView.constraints(top: headerView.bottomAnchor, bottom: safe.bottomAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, paddingTop: 10, paddingBottom: 20, paddingLeft: 20, paddingRight: 20, width: 0, height: 0)
+        detailCollectionView.constraints(top: headerView.bottomAnchor, bottom: safe.bottomAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, paddingTop: 10, paddingBottom: 20, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     private func confCollectionView(){
         
         guard let flowLayout = detailCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
-        let cellAtRow: CGFloat = 1.0
+        var cellAtRow: CGFloat = 1.0
         let insets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         let spacing = 20.0
-        let deviceWidth = view.frame.width
-        let itemHeight = UIFont.preferredFont(forTextStyle: .title3).lineHeight * 5 + 45 + 40
-        let itemWidth = (deviceWidth - insets.left - insets.right)
+        let collectionWidth = detailCollectionView.frame.width
+        let itemHeight = UIFont.preferredFont(forTextStyle: .title3).lineHeight * 4 + 15 * 6 + 40
+        let itemWidth = (collectionWidth - insets.left - insets.right - spacing)
+        
+        switch itemWidth{
+
+        case ..<390:
+            cellAtRow = 1
+        case 390..<390*2:
+            cellAtRow = 2
+        case 390*2..<390*3:
+            cellAtRow = 3
+        default:
+            cellAtRow = 1
+        }
         
         flowLayout.minimumInteritemSpacing = spacing
         flowLayout.minimumLineSpacing = spacing
-        flowLayout.sectionInset = insets
-        flowLayout.itemSize = CGSize(width: itemWidth / cellAtRow, height: itemHeight / cellAtRow)
+        //flowLayout.sectionInset = insets
+        detailCollectionView.contentInset = insets
+        flowLayout.itemSize = CGSize(width: itemWidth / cellAtRow, height: (itemHeight * 0.9))
     }
     
     private func confHeaderView(){

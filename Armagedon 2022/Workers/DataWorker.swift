@@ -53,12 +53,12 @@ protocol DataWorkerForDetailListProtocol{
 
 final class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyListProtocol, DataWorkerForFiltersProtocol, DataWorkerCollectedDataForAsteroidList, DataWorkerCollectedDataForDestroyList, DataWorkerForDetailListProtocol{
     
-    private var coreDataWorker: CoreDataWorkerProtocol!
-    private var jsonDecoderWorker: JSONDecoderWorkerProtocol!
-    private var jsonEncoderWorker: JSONEncoderWorkerProtocol!
-    private var networkWorker: NetworkWorkerProtocol!
-    private var dateWorker: DateWorkerProtocol!
-    private var imageWorker: ImageWorkerProtocol!
+    var coreDataWorker: CoreDataWorkerProtocol!
+    var jsonDecoderWorker: JSONDecoderWorkerProtocol!
+    var jsonEncoderWorker: JSONEncoderWorkerProtocol!
+    var networkWorker: NetworkWorkerProtocol!
+    var dateWorker: DateWorkerProtocol!
+    var imageWorker: ImageWorkerProtocol!
     
     var asteroidsDataModel = [AsteroidDataModel]()
     var asteroidsViewModel = [AsteroidViewModel]()

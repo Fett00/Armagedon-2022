@@ -219,7 +219,7 @@ final class AsteroidCollectionViewCell: UICollectionViewCell {
         dinoImage.constraints(top: nil, bottom: asteroidView.bottomAnchor, leading: nil, trailing: asteroidView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 10, width: 40, height: 40)
     }
     
-    private func render(model: AsteroidViewModel, indexPathElement: IndexPath.Element){
+    func render(model: AsteroidViewModel, indexPathElement: IndexPath.Element){
         
         //Сделать адекватное обновление топика с астероидом и динозавром
         

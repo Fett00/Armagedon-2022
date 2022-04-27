@@ -40,7 +40,7 @@ final class FilterCellWithSwitcher: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func render(with model: FiltersViewModel, indexPathRow: Int, state: Bool){
+    func render(with model: FiltersViewModel, indexPathRow: Int, state: Bool){
         
         label.text = model.title
         switcher.tag = indexPathRow

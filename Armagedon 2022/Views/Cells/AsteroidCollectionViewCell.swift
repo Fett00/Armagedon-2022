@@ -216,7 +216,7 @@ final class AsteroidCollectionViewCell: UICollectionViewCell {
         asteroidView.layer.addSublayer(dangerousGradientLayer)
         asteroidView.addSubview(dinoImage, asteroidImage, asteroidName)
         asteroidName.constraints(top: nil, bottom: asteroidView.bottomAnchor, leading: asteroidView.leadingAnchor, trailing: nil, paddingTop: 0, paddingBottom: 10, paddingLeft: 10, paddingRight: 0, width: 0, height: 0)
-        dinoImage.constraints(top: nil, bottom: asteroidView.bottomAnchor, leading: asteroidName.trailingAnchor, trailing: asteroidView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 10, paddingRight: 10, width: 40, height: 40)
+        dinoImage.constraints(top: nil, bottom: asteroidView.bottomAnchor, leading: nil, trailing: asteroidView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 10, width: 40, height: 40)
     }
     
     private func render(model: AsteroidViewModel, indexPathElement: IndexPath.Element){

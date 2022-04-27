@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailCollectionViewCell: UICollectionViewCell {
+final class DetailCollectionViewCell: UICollectionViewCell {
     
     static var id: String { DetailCollectionViewCell.description() }
     
@@ -105,7 +105,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(){
+    private func configureCell(){
         
         self.layer.cornerCurve = .continuous
         self.layer.cornerRadius = 20
@@ -115,7 +115,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func confSubview(){
+    private func confSubview(){
         
         self.addSubview(asteroidTime, asteroidDistance, asteroidVelocity, asteroidOrbitingBody, addToDestroyButton)
         
@@ -126,7 +126,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
         addToDestroyButton.constraints(top: asteroidOrbitingBody.bottomAnchor, bottom: self.bottomAnchor, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 15, paddingBottom: 15, paddingLeft: 10, paddingRight: 10, width: 0, height: 40)
     }
     
-    func render(model: DetailApproachViewModel, indexPathElement: IndexPath.Element){
+    private func render(model: DetailApproachViewModel, indexPathElement: IndexPath.Element){
         
         asteroidTime.text = model.destinationTime
         asteroidDistance.text = model.distance

@@ -7,18 +7,18 @@
 
 import UIKit
 
-class FilterCellWithSwitcher: UITableViewCell {
+final class FilterCellWithSwitcher: UITableViewCell {
 
     static var id: String { FilterCellWithSwitcher.description() }
     
-    let label: UILabel = {
+    private let label: UILabel = {
         
         let label = UILabel()
         
         return label
     }()
     
-    let switcher: UISwitch = {
+    private let switcher: UISwitch = {
         
         let switcher = UISwitch()
         
@@ -40,14 +40,14 @@ class FilterCellWithSwitcher: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func render(with model: FiltersViewModel, indexPathRow: Int, state: Bool){
+    private func render(with model: FiltersViewModel, indexPathRow: Int, state: Bool){
         
         label.text = model.title
         switcher.tag = indexPathRow
         switcher.isOn = state
     }
 
-    func configSubview(){
+    private func configSubview(){
         
         self.contentView.addSubview(switcher, label)
         

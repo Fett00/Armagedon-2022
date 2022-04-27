@@ -7,18 +7,18 @@
 
 import UIKit
 
-class FilterCellWithSegment: UITableViewCell {
+final class FilterCellWithSegment: UITableViewCell {
     
     static var id: String { FilterCellWithSegment.description() }
     
-    let label: UILabel = {
+    private let label: UILabel = {
         
         let label = UILabel()
         
         return label
     }()
     
-    let segment: UISegmentedControl = {
+    private let segment: UISegmentedControl = {
         
         let segment = UISegmentedControl()
         
@@ -40,7 +40,7 @@ class FilterCellWithSegment: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func render(with model: FiltersViewModel, indexPathRow: Int, state: FilterDataModel.DestinationType){
+    private func render(with model: FiltersViewModel, indexPathRow: Int, state: FilterDataModel.DestinationType){
         
         label.text = model.title
         
@@ -68,7 +68,7 @@ class FilterCellWithSegment: UITableViewCell {
         
     }
     
-    func configSubview(){
+    private func configSubview(){
         
         self.contentView.addSubview(segment, label)
         

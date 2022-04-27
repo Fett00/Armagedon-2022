@@ -7,13 +7,13 @@
 
 import UIKit
 
-class AsteroidListViewController: UIViewController {
+final class AsteroidListViewController: UIViewController {
     
-    let dataWorker: DataWorkerForAsteroidListProtocol
-    let data: DataWorkerCollectedDataForAsteroidList
+    private let dataWorker: DataWorkerForAsteroidListProtocol
+    private let data: DataWorkerCollectedDataForAsteroidList
     
     //Таблица с астероидами
-    let asteroidsCollectionView: UICollectionView = {
+    private let asteroidsCollectionView: UICollectionView = {
        
         let layout = UICollectionViewFlowLayout()
         
@@ -81,7 +81,7 @@ class AsteroidListViewController: UIViewController {
         loadingView.frame = self.view.frame
     }
     
-    func configureView(){
+    private func configureView(){
         
         self.navigationItem.title = "Армагедон 2022"
         self.view.backgroundColor = .systemBackground
@@ -91,7 +91,7 @@ class AsteroidListViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = filterBarButtonItem
     }
     
-    func configureSubview(){
+    private func configureSubview(){
         
         view.addSubview(asteroidsCollectionView)
         
@@ -103,7 +103,7 @@ class AsteroidListViewController: UIViewController {
         asteroidsCollectionView.constraints(top: safeArea.topAnchor, bottom: safeArea.bottomAnchor, leading: safeArea.leadingAnchor, trailing: safeArea.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
     }
     
-    func layoutAsteroidsCollectionView(){
+    private func layoutAsteroidsCollectionView(){
         
         guard let flowLayout = asteroidsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
@@ -134,7 +134,7 @@ class AsteroidListViewController: UIViewController {
         //asteroidsCollectionView.systemLayoutSizeFitting(CGSize(width: itemSize, height: itemSize))
     }
     
-    @objc func openFilters(){
+    @objc private func openFilters(){
         
         let viewToPush = ProjectCoordinator.shared.createFiltersViewController()
         
@@ -145,7 +145,7 @@ class AsteroidListViewController: UIViewController {
         self.asteroidsCollectionView.scrollToItem(at: topRow, at: .centeredVertically, animated: false)
     }
     
-    @objc func addToDestroying(_ sender: UIButton){
+    @objc private func addToDestroying(_ sender: UIButton){
         
         sender.showTapAnimation {
             

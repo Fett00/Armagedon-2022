@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DestroyingTableViewCell: UITableViewCell {
+final class DestroyingTableViewCell: UITableViewCell {
 
     static var id: String { DestroyingTableViewCell.description() }
     
@@ -89,7 +89,7 @@ class DestroyingTableViewCell: UITableViewCell {
         asteroidDistance.constraints(top: asteroidTime.bottomAnchor, bottom: self.contentView.bottomAnchor, leading: asteroidImage.trailingAnchor, trailing: self.contentView.trailingAnchor, paddingTop: 5, paddingBottom: 20, paddingLeft: 20, paddingRight: 10, width: 0, height: 0)
     }
     
-    func setUpCell(asteroid: AsteroidViewModel){
+    private func setUpCell(asteroid: AsteroidViewModel){
         
         self.asteroidName.text = asteroid.asteroidName
         self.asteroidDistance.text = asteroid.distance
@@ -98,7 +98,7 @@ class DestroyingTableViewCell: UITableViewCell {
         //self.asteroidImage.text = String(meal.price) + " ₽"
     }
     
-    func setUpCellImage(image: UIImage){
+    private func setUpCellImage(image: UIImage){
         
         asteroidImage.image = image
     }

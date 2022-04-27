@@ -9,10 +9,10 @@ import UIKit
 
 final class DetailViewController: UIViewController {
     
-    let model: AsteroidViewModel
-    let dataWorker: DataWorkerForDetailListProtocol
+    private let model: AsteroidViewModel
+    private let dataWorker: DataWorkerForDetailListProtocol
     
-    let detailCollectionView: UICollectionView = {
+    private let detailCollectionView: UICollectionView = {
        
         let layout = UICollectionViewFlowLayout()
         
@@ -23,7 +23,7 @@ final class DetailViewController: UIViewController {
         return collection
     }()
     
-    let headerView: UIView = {
+    private let headerView: UIView = {
         
         let view = UIView()
         
@@ -225,7 +225,7 @@ final class DetailViewController: UIViewController {
         headerAsteroidEstimation.constraints(top: headerAsteroidDiameter.bottomAnchor, bottom: headerView.bottomAnchor, leading: headerView.leadingAnchor, trailing: headerView.trailingAnchor, paddingTop: 15, paddingBottom: 15, paddingLeft: 10, paddingRight: 10, width: 0, height: 0)
     }
     
-    func loadDataForHeader(){
+    private func loadDataForHeader(){
         
         headerDangerousGradientLayer.colors = [model.asteroidDangerousColor.startColor, model.asteroidDangerousColor.endColor]
         
@@ -239,7 +239,7 @@ final class DetailViewController: UIViewController {
         headerAsteroidEstimation.text = model.isDangerous
     }
     
-    @objc func addToDestroying(_ sender: UIButton){
+    @objc private func addToDestroying(_ sender: UIButton){
         
         let index = sender.tag
         
@@ -251,7 +251,7 @@ final class DetailViewController: UIViewController {
         }
     }
     
-    @objc func closeView(){
+    @objc private func closeView(){
         
         self.dismiss(animated: true, completion: nil)
     }

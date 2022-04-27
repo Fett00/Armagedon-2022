@@ -108,8 +108,8 @@ final class AsteroidListViewController: UIViewController {
         guard let flowLayout = asteroidsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
         var cellAtRow: CGFloat = 1.0
-        let insets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        let spacing = 20.0
+        let insets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        let spacing = 10.0
         let collectionWidth = asteroidsCollectionView.frame.width
         
         switch collectionWidth{
@@ -127,7 +127,7 @@ final class AsteroidListViewController: UIViewController {
         let itemSize = (collectionWidth - insets.left - insets.right - spacing * cellAtRow)
         
         flowLayout.minimumInteritemSpacing = spacing
-        flowLayout.minimumLineSpacing = spacing
+        flowLayout.minimumLineSpacing = spacing * 2
         //flowLayout.sectionInset = insets
         asteroidsCollectionView.contentInset = insets
         flowLayout.itemSize = CGSize(width: itemSize / cellAtRow, height: (itemSize * 0.9) / cellAtRow)

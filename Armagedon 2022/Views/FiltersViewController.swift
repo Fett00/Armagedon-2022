@@ -7,11 +7,11 @@
 
 import UIKit
 //""" Ед. изм. расстояний км л. орб. Показывать только опасные """
-class FiltersViewController: UIViewController {
+final class FiltersViewController: UIViewController {
     
-    let dataWorker: DataWorkerForFiltersProtocol!
+    private let dataWorker: DataWorkerForFiltersProtocol!
     
-    let tableView: UITableView
+    private let tableView: UITableView
     
     init(dataWorker: DataWorkerForFiltersProtocol, style: UITableView.Style = .insetGrouped){
         
@@ -33,7 +33,7 @@ class FiltersViewController: UIViewController {
         configureSubview()
     }
     
-    func configureView(){
+    private func configureView(){
         
         self.navigationItem.title = "Фильтр"
         self.view.backgroundColor = .systemBackground
@@ -43,7 +43,7 @@ class FiltersViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = acceptBarButtonItem
     }
     
-    func configureSubview(){
+    private func configureSubview(){
         
         view.addSubview(tableView)
         
@@ -60,7 +60,7 @@ class FiltersViewController: UIViewController {
         tableView.constraints(top: safe.topAnchor, bottom: safe.bottomAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
     }
     
-    @objc func updateFilters(_ sender: UIView){
+    @objc private func updateFilters(_ sender: UIView){
         
         let viewType = dataWorker.filtersViewModel[sender.tag].secondaryView
         
@@ -88,7 +88,7 @@ class FiltersViewController: UIViewController {
         }
     }
     
-    @objc func acceptFilter(){
+    @objc private func acceptFilter(){
         
         self.navigationController?.popViewController(animated: true)
     }

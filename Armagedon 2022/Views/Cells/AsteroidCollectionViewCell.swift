@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AsteroidCollectionViewCell: UICollectionViewCell {
+final class AsteroidCollectionViewCell: UICollectionViewCell {
     
     static var id: String { AsteroidCollectionViewCell.description() }
     
@@ -203,7 +203,7 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         dangerousGradientLayer.frame = asteroidView.bounds
     }
     
-    func configureCell(){
+    private func configureCell(){
         
         self.addSubview(asteroidView, asteroidDiameter, asteroidTime, asteroidDistance, asteroidEstimation, addToDestroyButton)
         
@@ -219,7 +219,7 @@ class AsteroidCollectionViewCell: UICollectionViewCell {
         dinoImage.constraints(top: nil, bottom: asteroidView.bottomAnchor, leading: asteroidName.trailingAnchor, trailing: asteroidView.trailingAnchor, paddingTop: 0, paddingBottom: 0, paddingLeft: 10, paddingRight: 10, width: 40, height: 40)
     }
     
-    func render(model: AsteroidViewModel, indexPathElement: IndexPath.Element){
+    private func render(model: AsteroidViewModel, indexPathElement: IndexPath.Element){
         
         //Сделать адекватное обновление топика с астероидом и динозавром
         

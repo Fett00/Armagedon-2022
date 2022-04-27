@@ -89,7 +89,7 @@ final class DestroyingTableViewCell: UITableViewCell {
         asteroidDistance.constraints(top: asteroidTime.bottomAnchor, bottom: self.contentView.bottomAnchor, leading: asteroidImage.trailingAnchor, trailing: self.contentView.trailingAnchor, paddingTop: 5, paddingBottom: 20, paddingLeft: 20, paddingRight: 10, width: 0, height: 0)
     }
     
-    private func setUpCell(asteroid: AsteroidViewModel){
+    func setUpCell(asteroid: AsteroidViewModel){
         
         self.asteroidName.text = asteroid.asteroidName
         self.asteroidDistance.text = asteroid.distance
@@ -97,16 +97,4 @@ final class DestroyingTableViewCell: UITableViewCell {
         self.asteroidImage.backgroundColor = UIColor(cgColor: asteroid.asteroidDangerousColor.endColor)
         //self.asteroidImage.text = String(meal.price) + " ₽"
     }
-    
-    private func setUpCellImage(image: UIImage){
-        
-        asteroidImage.image = image
-    }
-    
-//    override func prepareForReuse() {
-//
-//        asteroidName.text = ""
-//        asteroidDistance.text = ""
-//        mealCount.text = "1"
-//    }
 }

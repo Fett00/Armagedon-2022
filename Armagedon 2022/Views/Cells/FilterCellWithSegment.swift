@@ -40,7 +40,7 @@ final class FilterCellWithSegment: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func render(with model: FiltersViewModel, indexPathRow: Int, state: FilterDataModel.DestinationType){
+    func render(with model: FiltersViewModel, indexPathRow: Int, state: FilterDataModel.DestinationType){
         
         label.text = model.title
         

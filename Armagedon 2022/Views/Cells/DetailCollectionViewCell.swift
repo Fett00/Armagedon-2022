@@ -126,7 +126,7 @@ final class DetailCollectionViewCell: UICollectionViewCell {
         addToDestroyButton.constraints(top: asteroidOrbitingBody.bottomAnchor, bottom: self.bottomAnchor, leading: self.leadingAnchor, trailing: self.trailingAnchor, paddingTop: 15, paddingBottom: 15, paddingLeft: 10, paddingRight: 10, width: 0, height: 40)
     }
     
-    private func render(model: DetailApproachViewModel, indexPathElement: IndexPath.Element){
+    func render(model: DetailApproachViewModel, indexPathElement: IndexPath.Element){
         
         asteroidTime.text = model.destinationTime
         asteroidDistance.text = model.distance

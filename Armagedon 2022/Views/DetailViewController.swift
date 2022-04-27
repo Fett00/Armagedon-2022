@@ -136,14 +136,14 @@ final class DetailViewController: UIViewController {
         confView()
         confSubview()
         confHeaderView()
-        confCollectionView()
+        //confCollectionView()
         loadDataForHeader()
     }
     
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews()
-        headerDangerousGradientLayer.frame = headerAsteroidView.bounds
+        headerDangerousGradientLayer.frame = headerView.bounds
         confCollectionView()
     }
     
@@ -170,7 +170,7 @@ final class DetailViewController: UIViewController {
         let safe = self.view.safeAreaLayoutGuide
         
         headerView.constraints(top: safe.topAnchor, bottom: nil, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, paddingTop: 20, paddingBottom: 0, paddingLeft: 20, paddingRight: 20, width: 0, height: 0)
-        detailCollectionView.constraints(top: headerView.bottomAnchor, bottom: safe.bottomAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, paddingTop: 10, paddingBottom: 20, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
+        detailCollectionView.constraints(top: headerView.bottomAnchor, bottom: safe.bottomAnchor, leading: headerView.leadingAnchor, trailing: headerView.trailingAnchor, paddingTop: 10, paddingBottom: 20, paddingLeft: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     private func confCollectionView(){
@@ -178,7 +178,7 @@ final class DetailViewController: UIViewController {
         guard let flowLayout = detailCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
         
         var cellAtRow: CGFloat = 1.0
-        let insets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let spacing = 20.0
         let collectionWidth = detailCollectionView.frame.width
         
@@ -195,7 +195,7 @@ final class DetailViewController: UIViewController {
         }
         
         let itemHeight = UIFont.preferredFont(forTextStyle: .title3).lineHeight * 4 + 15 * 6 + 40
-        let itemWidth = (collectionWidth - insets.left - insets.right - spacing * cellAtRow)
+        let itemWidth = (collectionWidth - insets.left - insets.right - spacing * (cellAtRow - 1))
         
         flowLayout.minimumInteritemSpacing = spacing
         flowLayout.minimumLineSpacing = spacing

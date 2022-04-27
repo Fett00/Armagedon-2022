@@ -80,13 +80,14 @@ final class DestroyingTableViewCell: UITableViewCell {
         self.contentView.clipsToBounds = true
         self.selectionStyle = .none
         
-        asteroidImage.constraints(top: self.contentView.topAnchor, bottom: self.contentView.bottomAnchor, leading: self.contentView.leadingAnchor, trailing: nil, paddingTop: 20, paddingBottom: 20, paddingLeft: 20, paddingRight: 0, width: 60, height: 60)
+        asteroidImage.constraints(top: nil, bottom: nil, leading: self.contentView.leadingAnchor, trailing: nil, paddingTop: 20, paddingBottom: 20, paddingLeft: 20, paddingRight: 0, width: 60, height: 60)
+        asteroidImage.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
         
         asteroidName.constraints(top: self.contentView.topAnchor, bottom: nil, leading: asteroidImage.trailingAnchor, trailing: self.contentView.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingLeft: 20, paddingRight: 10, width: 0, height: 0)
         
         asteroidTime.constraints(top: asteroidName.bottomAnchor, bottom: nil, leading: asteroidImage.trailingAnchor, trailing: self.contentView.trailingAnchor, paddingTop: 10, paddingBottom: 0, paddingLeft: 20, paddingRight: 10, width: 0, height: 0)
         
-        asteroidDistance.constraints(top: asteroidTime.bottomAnchor, bottom: self.contentView.bottomAnchor, leading: asteroidImage.trailingAnchor, trailing: self.contentView.trailingAnchor, paddingTop: 5, paddingBottom: 20, paddingLeft: 20, paddingRight: 10, width: 0, height: 0)
+        asteroidDistance.constraints(top: asteroidTime.bottomAnchor, bottom: self.contentView.bottomAnchor, leading: asteroidImage.trailingAnchor, trailing: self.contentView.trailingAnchor, paddingTop: 5, paddingBottom: 10, paddingLeft: 20, paddingRight: 10, width: 0, height: 0)
     }
     
     func setUpCell(asteroid: AsteroidViewModel){

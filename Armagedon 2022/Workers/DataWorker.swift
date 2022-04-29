@@ -243,10 +243,7 @@ final class DataWorker: DataWorkerForAsteroidListProtocol, DataWorkerForDestroyL
                     asteroidSize = CGSize(width: 100, height: 100)
                 }
                 
-                let imageModel = AsteroidImageDataModel(asteroidName: dataObject.name, asteroidSize: .medium, isDangerous: dataObject.isDangerous, imageSize: CGSize(width: 400, height: 200) )
-                
                 newAsteroidsViewModel.append(AsteroidViewModel(
-                    asteroidImage: self.imageWorker.createViewWithAsteroidAndDinosaur(model: imageModel),
                     diameter: computedDiameter,
                     destinationTime: "Подлетает \(self.dateWorker.convertForViewModel(date: dataObject.destinationTime))",
                     distance: destination,

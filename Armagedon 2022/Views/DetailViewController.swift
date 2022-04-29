@@ -244,7 +244,7 @@ final class DetailViewController: UIViewController {
         
         let index = sender.tag
         
-        let asteroidForDestroy = AsteroidViewModel(asteroidImage: model.asteroidImage, diameter: model.diameter, destinationTime: model.detailApproachViewModel[index].destinationTime, distance: model.detailApproachViewModel[index].distance, isDangerous: model.isDangerous, orbitingBody: model.detailApproachViewModel[index].orbitingBody, asteroidName: model.asteroidName, asteroidDangerousColor: model.asteroidDangerousColor, asteroidSize: model.asteroidSize, detailApproachViewModel: model.detailApproachViewModel)
+        let asteroidForDestroy = AsteroidViewModel(diameter: model.diameter, destinationTime: model.detailApproachViewModel[index].destinationTime, distance: model.detailApproachViewModel[index].distance, isDangerous: model.isDangerous, orbitingBody: model.detailApproachViewModel[index].orbitingBody, asteroidName: model.asteroidName, asteroidDangerousColor: model.asteroidDangerousColor, asteroidSize: model.asteroidSize, detailApproachViewModel: model.detailApproachViewModel)
         
         sender.showTapAnimation {
             

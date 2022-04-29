@@ -9,7 +9,6 @@ import UIKit
 
 struct AsteroidViewModel: Equatable{
     
-    let asteroidImage: UIView
     let diameter: String
     let destinationTime: String
     let distance: String

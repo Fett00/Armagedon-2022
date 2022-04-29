@@ -12,8 +12,6 @@ protocol ImageWorkerProtocol{
     func requestImage(on imageUrl: String, handler: @escaping (UIImage) -> ())
     
     func saveImage(image: UIImage, with url: String)
-    
-    func createViewWithAsteroidAndDinosaur(model: AsteroidImageDataModel) -> UIView
 }
 
 class ImageWorker: ImageWorkerProtocol{
@@ -75,56 +73,5 @@ class ImageWorker: ImageWorkerProtocol{
     private func createImageNameFromImageURL(url: String) -> String {
         
         return String(url.split(separator: "/").last ?? "")
-    }
-    
-    func createViewWithAsteroidAndDinosaur(model: AsteroidImageDataModel) -> UIView{
-            
-            let asteroidView = UIView(frame: CGRect(origin: .zero, size: model.imageSize))
-            
-            let gradientLayer = CAGradientLayer()
-            gradientLayer.frame = asteroidView.bounds
-            gradientLayer.colors = [UIColor.red.cgColor, UIColor.blue.cgColor]
-            
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-            gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-            
-            asteroidView.layer.addSublayer(gradientLayer)
-            
-            if model.isDangerous{
-                gradientLayer.colors = [Colors.dcL.cgColor, Colors.dcR.cgColor]
-            }
-            else{
-                gradientLayer.colors = [Colors.ndcL.cgColor, Colors.ndcR.cgColor]
-            }
-            
-//            switch model.asteroidSize{
-//
-//            case .small:
-//
-//                asteroidImageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
-//                asteroidImageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
-//
-//            case .medium:
-//
-//                asteroidImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//                asteroidImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-//
-//            case .big:
-//
-//                asteroidImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-//                asteroidImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-//            }
-            
-        
-        return asteroidView
-    }
-    
-    private func draw(with size: CGSize, with colors: [CGColor]){
-        
-        UIGraphicsBeginImageContext(size)
-        
-        
-        
-        UIGraphicsEndImageContext()
     }
 }

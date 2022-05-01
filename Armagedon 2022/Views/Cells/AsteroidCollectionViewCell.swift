@@ -200,7 +200,13 @@ final class AsteroidCollectionViewCell: UICollectionViewCell {
         asteroidEstimation.frame = asteroidEstimationFrame
         addToDestroyButton.frame = addToDestroyButtonFrame
         
+        CATransaction.begin()
+        
+        CATransaction.setDisableActions(true)
         dangerousGradientLayer.frame = asteroidView.bounds
+        
+        CATransaction.commit()
+        //UIViewPropertyAnimator
     }
     
     private func configureCell(){
